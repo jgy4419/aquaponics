@@ -12,7 +12,7 @@
                 <ChartView class="chart"/>
             </div>
             <div v-if="btnState === 1" class="sensor">
-                <Sensor/>
+                <Sensor class="abc"/>
             </div>
             <div v-if="btnState === 2"  class="watch">
                 <video autoplay="true" id="videoElement"/>
@@ -143,6 +143,11 @@ export default {
         .btns{
             display: flex;    
         }
+        .sensor{
+            .abc{
+                width: 100%;
+            }
+        }
         .btn{
             width: 100px;
             height: 50px;
@@ -150,11 +155,6 @@ export default {
             font-weight: 700;
             margin-right: 10px;
             border-radius: 5px;
-        }
-        #videoElement {
-            width: 500px;
-            height: 375px;
-            background-color: #666;
         }
     }
     

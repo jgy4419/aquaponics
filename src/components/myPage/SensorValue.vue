@@ -8,17 +8,8 @@
             <div class="sensor"
             v-for="sensor, i in sensorList.length" :key="i">
                 <h2>{{sensorList[i]}}</h2>
-                <p>{{sensor.sensor1}}</p>
+                <p>{{sensorValue[i]}}</p>
             </div>
-            <!-- <div class="sensor">
-                {{sensor.sensor1}}
-            </div>
-            <div class="sensor">
-                {{sensor.sensor2}}
-            </div>
-            <div class="sensor">
-                {{sensor.sensor3}}
-            </div> -->
         </div>
     </div>
 </template>
@@ -29,11 +20,7 @@ export default {
     data(){
         return{
             sensorList:['물고기 상태', '물 상태', '식물 상태'],
-            sensor: {
-                sensor1: '',
-                sensor2: '',
-                sensor3: '',
-            }
+            sensorValue: [],
         }
     },
     mounted(){
@@ -41,9 +28,12 @@ export default {
         axios.get('http://localhost:8800/sensor')
         .then(res => {
             console.log(res.data[0].sensor1);
-            this.sensor.sensor1 = res.data[0].sensor1;
-            this.sensor.sensor2 = res.data[0].sensor2;
-            this.sensor.sensor3 = res.data[0].author;
+            for(let i = 0; i < res.data.length; i++){
+                this.sensorValue.push(res.data[0].sensor1);
+                this.sensorValue.push(res.data[0].sensor2);
+                this.sensorValue.push(res.data[0].author);
+            }
+            console.log('!!',this.sensorValue);
         })
         .catch(err => {
             console.log(err);
@@ -54,14 +44,23 @@ export default {
 
 <style lang="scss" scoped>
 .contain{
-    width: 70vw;
+    height: 100vh;
     .inner{
         display: flex;
         flex-wrap: wrap;
         .sensor{
             width: 30%;
             height: 200px;
-            border: 1px solid #333;
+            box-sizing: border-box;
+            border-radius: 10px;
+            margin: 5% 3% 0% 0%;
+            padding: 20px;
+            box-shadow: 4px 12px 30px 6px rgb(231, 231, 231);
+            transition: .2s;
+            cursor: pointer;
+        }
+        .sensor:hover{
+            transform: translateY(-10px);
         }
     }
 }
