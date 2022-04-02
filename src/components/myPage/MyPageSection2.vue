@@ -9,28 +9,40 @@
                 </button>
             </div>
             <div v-if="btnState === 0" class="graph">
-                <ChartView/>
+                <ChartView class="chart"/>
             </div>
             <div v-if="btnState === 1" class="sensor">
-                센서 값
+                <Sensor/>
             </div>
-            <div v-if="btnState === 2" class="watch">
-                영상
+            <div v-if="btnState === 2"  class="watch">
+                <video autoplay="true" id="videoElement"/>
             </div>
+                
         </div>
     </div>
 </template>
 
 <script>
-import ChartView from './ChartView.vue'
+import ChartView from './ChartView.vue';
+import Sensor from './SensorValue.vue';
 export default {
     name: "line-chart",
     type: "line",
     components:{
         ChartView,
+        Sensor
     },
     mounted(){
-        
+        var video = document.getElementById("videoElement");
+        if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                video.srcObject = stream;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
     },
     data(){
         return{
@@ -103,7 +115,21 @@ export default {
         btnClick(i){
             console.log(i);
             this.btnState = i;
-        }
+        },
+        // webCam(){
+        //     var video = document.getElementById("#videoElement");
+        //     video.addEventListener('')
+    
+        //     if (navigator.mediaDevices.getUserMedia) {
+        //     navigator.mediaDevices.getUserMedia({ video: true })
+        //         .then(function (stream) {
+        //         video.srcObject = stream;
+        //         })
+        //         .catch(function (error) {
+        //         console.log(error);
+        //         });
+        //     }
+        // }
     }
 }
 </script>
@@ -113,7 +139,7 @@ export default {
     width: 100vw;
     .inner{
         margin: auto;
-        width: 100%;
+        width: 70%;
         .btns{
             display: flex;    
         }
@@ -125,6 +151,12 @@ export default {
             margin-right: 10px;
             border-radius: 5px;
         }
+        #videoElement {
+            width: 500px;
+            height: 375px;
+            background-color: #666;
+        }
     }
+    
 }
 </style>

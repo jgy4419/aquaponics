@@ -1,13 +1,16 @@
 <template>
     <header>
-        <div class="inner">
-            <ul class="headerBox">
-                <router-link :to="headerUrl.loginBefore[i]" v-for="data, i in headerUrl.loginBefore.length" :key="i">
-                    <li>
-                        {{headerData.loginBefore[i]}}
+        <div class="headerBox">
+            <p class="logo">로고</p>
+            <div class="menu">
+                <ul>
+                    <li class="menuList" v-for="menu, i in headerData.loginBefore" :key="i">
+                        <router-link :to="headerUrl.loginBefore[i]">
+                            {{menu}}
+                        </router-link>
                     </li>
-                </router-link>
-            </ul>
+                </ul>
+            </div>
         </div>
     </header>
 </template>
@@ -31,23 +34,33 @@ export default {
 
 <style lang="scss" scoped>
 header{
-    position: relative;
     width: 100vw;
-    height: 80px;
-    background-color: #E5E3C9;
-    .inner{
-        position: absolute;
+    height: 70px;
+    // background-color: rgb(215, 215, 215);
+    .headerBox{
         margin: auto;
-        width: 250px;
-        right: 0;
-        ul{
-            padding: 13% 15%;
-            display: flex;
-            justify-content: space-between;
-            li{
-                font-size: 16px;
-                font-weight: 700;
-                cursor: pointer;
+        padding-top: 25px;
+        width: 90vw;
+        display: flex;
+        justify-content: space-between;
+        .logo{
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+        }
+        .menu{
+            width: 200px;
+            ul{
+                display: flex;
+                justify-content: space-between;
+                color: rgb(226, 226, 226);
+                li a{
+                    font-weight: 700;
+                    color: rgb(172, 172, 172);
+                }
+                li a:hover{
+                    color: #333;
+                }
             }
         }
     }

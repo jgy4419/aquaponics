@@ -19,7 +19,7 @@ export default {
     z-index: 1;
     width: 100vw;
     height: 90vh;
-    background-image: url('https://images.roa.ai/articles/2019/02/49151083_2380361025372621_1976658500691951616_n.jpg');
+    // background-image: url('https://images.roa.ai/articles/2019/02/49151083_2380361025372621_1976658500691951616_n.jpg');
     background-repeat: no-repeat;
     background-size: 100%;
     .inner{
