@@ -16,7 +16,7 @@ export default {
 <style lang="scss" scoped>
 .contain{
     position: relative;
-    z-index: 1;
+    z-index: 10;
     width: 100vw;
     height: 90vh;
     // background-image: url('https://images.roa.ai/articles/2019/02/49151083_2380361025372621_1976658500691951616_n.jpg');

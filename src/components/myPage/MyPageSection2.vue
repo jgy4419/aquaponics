@@ -136,6 +136,8 @@ export default {
 
 <style lang="scss" scoped>
 .contain{
+    position: relative;
+    z-index: 1;
     width: 100vw;
     .inner{
         margin: auto;
