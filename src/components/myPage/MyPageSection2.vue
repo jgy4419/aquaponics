@@ -15,7 +15,7 @@
                 <Sensor class="abc"/>
             </div>
             <div v-if="btnState === 2"  class="watch">
-                <video autoplay="true" id="videoElement"/>
+                <Camera/>
             </div>
                 
         </div>
@@ -25,24 +25,26 @@
 <script>
 import ChartView from './ChartView.vue';
 import Sensor from './SensorValue.vue';
+import Camera from './Camera.vue';
 export default {
     name: "line-chart",
     type: "line",
     components:{
         ChartView,
-        Sensor
+        Sensor,
+        Camera
     },
     mounted(){
-        var video = document.getElementById("videoElement");
-        if (navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true })
-            .then(function (stream) {
-                video.srcObject = stream;
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        }
+        // var video = document.getElementById("videoElement");
+        // if (navigator.mediaDevices.getUserMedia) {
+        //     navigator.mediaDevices.getUserMedia({ video: true })
+        //     .then(function (stream) {
+        //         video.srcObject = stream;
+        //     })
+        //     .catch(function (error) {
+        //         console.log(error);
+        //     });
+        // }
     },
     data(){
         return{
@@ -116,20 +118,6 @@ export default {
             console.log(i);
             this.btnState = i;
         },
-        // webCam(){
-        //     var video = document.getElementById("#videoElement");
-        //     video.addEventListener('')
-    
-        //     if (navigator.mediaDevices.getUserMedia) {
-        //     navigator.mediaDevices.getUserMedia({ video: true })
-        //         .then(function (stream) {
-        //         video.srcObject = stream;
-        //         })
-        //         .catch(function (error) {
-        //         console.log(error);
-        //         });
-        //     }
-        // }
     }
 }
 </script>
@@ -137,7 +125,7 @@ export default {
 <style lang="scss" scoped>
 .contain{
     position: relative;
-    z-index: 1;
+    z-index: 2;
     width: 100vw;
     .inner{
         margin: auto;
@@ -158,7 +146,13 @@ export default {
             margin-right: 10px;
             border-radius: 5px;
         }
+        @media screen and (max-width: 768px){
+            .btn{
+                width: 80px;
+                height: 40px;
+                font-size: 12px;
+            }
+        }
     }
-    
 }
 </style>

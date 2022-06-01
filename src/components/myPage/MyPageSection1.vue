@@ -38,10 +38,10 @@ export default {
         align-items: center;
         // margin-top: 6%;
         img{
-            width: 200px;
-            height: 200px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            border: 5px solid rgb(216, 216, 216);
+            border: 5px solid rgb(241, 240, 240);
             margin-right: 5%;
         }
         .name{
@@ -52,6 +52,26 @@ export default {
         .introduction{
             font-size: 25px;
             font-weight: 500;
+        }
+    }
+}
+@media screen and (max-width: 768px){
+    .contain{
+        .inner{
+            display: block;
+            text-align: center;
+            img{
+                width: 100px;
+                height: 100px;
+            }
+            .name{
+                margin-top: 20px;
+                font-size: 30px;
+            }
+            .introduction{
+                margin-top: -20px;
+                font-size: 20px;
+            }
         }
     }
 }

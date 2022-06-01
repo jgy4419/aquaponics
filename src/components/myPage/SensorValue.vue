@@ -1,7 +1,7 @@
 <template>
     <div class="contain">
         <br/>
-        <h1>???님의 아쿠아포닉스 상태는?</h1>
+        <p class="title">???님의 아쿠아포닉스 상태는?</p>
         <br>
         <hr>
         <div class="inner">
@@ -45,6 +45,10 @@ export default {
 <style lang="scss" scoped>
 .contain{
     height: 100vh;
+    .title{
+        font-size: 30px;
+        font-weight: 700;
+    }
     .inner{
         display: flex;
         flex-wrap: wrap;
@@ -61,6 +65,19 @@ export default {
         }
         .sensor:hover{
             transform: translateY(-10px);
+        }
+    }
+    @media screen and (max-width: 768px){
+        .title{
+            font-size: 20px;
+        }
+        .inner{
+            display: block;
+            .sensor{
+                width: 100%;
+                height: 150px;
+                font-size: 14px;
+            }
         }
     }
 }

@@ -40,7 +40,7 @@ export default {
 <style lang="scss" scoped>
 .container{
     position: absolute;
-    z-index: 10;
+    z-index: 2;
     margin: auto;
     top: 20%;
     left: 0;

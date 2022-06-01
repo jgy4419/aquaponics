@@ -21,7 +21,7 @@ export default {
               label: '# of Votes',
               data: [12, 20, 3, 5, 2, 3],
               backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
+                'rgba(219, 252, 0, 0.2)',
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 99, 132, 0.2)',
@@ -62,4 +62,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+div{
+  color: rgba(219, 252, 171, 0.2)
+}
 </style>

@@ -137,7 +137,8 @@ export default {
         }
     }
     .menu{
-        position: absolute;
+        position: fixed;
+        margin-top: -4.6%;
         z-index: 2;
         opacity: 0;
         width: 100vw;
@@ -163,7 +164,8 @@ export default {
         }
     }
     .menu.event{
-        height: 91vh;
+        z-index: 10;
+        height: 100vh;
         opacity: 1;
         transform: translateX(0px);
     }
