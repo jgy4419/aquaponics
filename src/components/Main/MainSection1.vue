@@ -12,13 +12,20 @@
                     </button>   
                 </router-link>
             </div>
-            <img class="mainImg" src="https://shop3.daumcdn.net/thumb/R500x500/?fname=http%3A%2F%2Fshop3.daumcdn.net%2Fshophow%2Fp%2FP14086506296.jpg%3Fut%3D20210723101748" alt="메인사진">
+            <img class="mainImg" :src="mainImage1" alt="메인사진">
         </div>
     </div>
 </template>
 
 <script>
+// UI 참고 사이트 http://shimlee.co.kr/ 
+import MainImage1 from '../../Image/Main/MainImage1.png'
 export default {
+    data(){
+        return{
+            mainImage1: MainImage1
+        }
+    },
     mounted(){
         setTimeout(() => {
             let mainText = document.querySelector('.mainText');
@@ -36,8 +43,9 @@ export default {
     height: 90vh;
     .inner{
         position: relative;
-        top: 15%;
-        width: 70%;
+        top: 15vh;
+        width: 80%;
+        height: 100%;
         margin: auto;
         display: flex;
         .titleBox{
@@ -81,6 +89,7 @@ export default {
             opacity: 0;
             transform: translateX(120px);
             transition: 2s;
+
             right: 0;
         }
         .mainImg.event{
@@ -91,10 +100,13 @@ export default {
 }
 @media screen and (max-width: 1000px){
     .contain{
-        background-image: url('https://shop3.daumcdn.net/thumb/R500x500/?fname=http%3A%2F%2Fshop3.daumcdn.net%2Fshophow%2Fp%2FP14086506296.jpg%3Fut%3D20210723101748');
+        width: 100vw;
+        height: 90vh;
+        background-image: url('../../Image/Main/MainImage1.png');
         background-repeat: no-repeat;
         background-size: cover;
         .inner{
+            top: 0;
             .titleBox{
                 margin: auto;
                 text-align: center;

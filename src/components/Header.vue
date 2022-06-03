@@ -64,7 +64,7 @@ export default {
     .headerBox{
         margin: auto;
         padding-top: 25px;
-        width: 70vw;
+        width: 80vw;
         display: flex;
         justify-content: space-between;
         
