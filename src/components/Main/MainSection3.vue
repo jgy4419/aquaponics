@@ -3,13 +3,9 @@
         <div class="inner">
             <div class="titleBox">
                 <div class="box"/>
-                <p class="greenTitle">내 손안의 아쿠아포닉스를 만들어봐요!</p>
+                <p class="greenTitle">내 손안의 아쿠아포닉스</p>
             </div>
             <div class="contentBox">
-                <!-- <div class="item">
-                    사이트 상세
-                    <button>보러가기</button>
-                </div> -->
                 <div class="item" v-for="itemName, i in items.title.length" :key="i">
                     <p class="title">{{items.title[i]}}</p>
                     <button class="btn">{{items.button[i]}}</button>
@@ -34,6 +30,8 @@ export default {
 
 <style lang="scss" scoped>
 .contain{
+    position: relative;
+    z-index: 10;
     width: 100vw;
     height: 800px;
     background-color: rgb(242, 242, 242);

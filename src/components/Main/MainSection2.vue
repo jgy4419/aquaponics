@@ -11,7 +11,7 @@
             <div class="contentBox">
                 <!-- 마우스 올리면 border 생기고, text 왼쪽으로 20px 옮기기 -->
                 <div v-for="itemText, i in items.itemText.length" :key="i" 
-                class="item" @mouseover="itemIn()" @mouseout="itemOut()">
+                class="items">
                     <div class="itemImage" :style="{backgroundImage:`url('${items.itemImage[i]}')`}"/>
                     <div class="itemText">
                         {{items.itemText[i]}}
@@ -37,11 +37,11 @@ export default {
     },
     mounted(){
         let screenHeight = document.documentElement.scrollHeight;
-        let item = document.querySelectorAll('.item');
+        let item = document.querySelectorAll('.items');
 
         document.addEventListener('scroll', function(){
             let currentScrollValue = document.documentElement.scrollTop;
-            if(currentScrollValue > screenHeight / 4){
+            if(currentScrollValue > screenHeight / 5){
                 for(let i = 0; i < item.length; i++){
                     item[i].classList.add('event');
                 }
@@ -51,13 +51,6 @@ export default {
                 }
             }
         })
-
-        // const items = document.querySelectorAll('.item');
-        // for(let i = 0; i < items.length; i++){
-        //     items[i].addEventListener('mouseover', function(){
-        //         // alert('test');
-        //     })
-        // }
     },
 }
 </script>
@@ -83,19 +76,22 @@ export default {
         width: 80vw;
         margin: auto;
         .contentBox{
+            margin-top: 10%;
             display: grid;
             grid-template-columns: 35vw 35vw;
-            // grid-template-rows: 500px 500px;
             gap: 10%;
             width: 100%;
             height: 80vh;
-            .item{
+            .items{
+                position: relative;
+                z-index: 10;
                 width: 35vw;
                 height: 500px;
                 opacity: 0;
-                transition: .7s;
+                transition: .5s;
                 transform: translateY(100px);
                 border-radius: 20px;
+                box-sizing: border-box;
                 box-shadow: 4px 12px 30px 6px rgb(231, 231, 231);
                 .itemImage{
                     background-size: cover;
@@ -110,12 +106,16 @@ export default {
                     transition: .4s;
                 }
             }
-            .item:nth-child(2n){
+            .items:nth-child(2n){
                 margin-top: 20%;
             }
-            .item.event{
+            .items.event{
                 opacity: .8;
                 transform: translateY(0px);
+            }
+            .items.event:hover{
+                opacity: 1;
+                // transition: .1s;
             }
         }
     }
@@ -142,12 +142,13 @@ export default {
         .inner{
             .contentBox{
                 display: block;
-                .item:nth-child(2n){
+                .items:nth-child(2n){
                     margin-top: 30px;
                 }
-                .item{
+                .items{
                     position: relative;
                     margin-top: 30px;
+                    width: 100%;
                     height: 400px;
                 }
             }
