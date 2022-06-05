@@ -1,7 +1,6 @@
 <template>
     <div id="container">
         <video autoplay="true" id="videoElement">
-    
         </video>
     </div>
 </template>
@@ -10,17 +9,21 @@
 export default {
     mounted(){
         var video = document.querySelector("#videoElement");
- 
-if (navigator.mediaDevices.getUserMedia) {
-  navigator.mediaDevices.getUserMedia({ video: true })
-    .then(function (stream) {
-      video.srcObject = stream;
-    })
-    .catch(function (err0r) {
-      console.log("Something went wrong!", err0r);
-    });
-}
-    } 
+        if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                video.srcObject = stream;
+            })
+            .catch(function (err0r) {
+                console.log("Something went wrong!", err0r);
+            });
+        }
+    },
+    watch: {
+        '$route' (){
+            location.reload();
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>

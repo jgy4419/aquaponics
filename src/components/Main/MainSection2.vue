@@ -1,15 +1,18 @@
 <template>
     <div class="contain">
+        <div class="backTexts">
+            <p class="backText" v-for="backText in backText" :key="backText">{{backText}}</p>
+        </div>
         <div class="inner">
             <div class="titleBox">
                 <div class="box"/>
-                <div class="title">Aquaponics?</div>
+                <p class="greenTitle">Aquaponics?</p>
             </div>
             <div class="contentBox">
                 <!-- 마우스 올리면 border 생기고, text 왼쪽으로 20px 옮기기 -->
                 <div v-for="itemText, i in items.itemText.length" :key="i" 
                 class="item" @mouseover="itemIn()" @mouseout="itemOut()">
-                    <img class="itemImage" :src="items.itemImage[i]" alt="메인이미지들">
+                    <div class="itemImage" :style="{backgroundImage:`url('${items.itemImage[i]}')`}"/>
                     <div class="itemText">
                         {{items.itemText[i]}}
                     </div>
@@ -29,6 +32,7 @@ export default {
                 itemText: ['설명 구구절ㄹ절절1', '설명 구구절ㄹ절절2', '설명 구구절ㄹ절절3', '설명 구구절ㄹ절절4'],
             },
             hoverState: 0,
+            backText: ['#아쿠아포닉스를', '#집 안에서', '#애완동물처럼'],
         }
     },
     mounted(){
@@ -47,17 +51,14 @@ export default {
                 }
             }
         })
+
+        // const items = document.querySelectorAll('.item');
+        // for(let i = 0; i < items.length; i++){
+        //     items[i].addEventListener('mouseover', function(){
+        //         // alert('test');
+        //     })
+        // }
     },
-    methods: {
-        itemIn(){
-            // alert('in');
-            this.hoverState = 1;
-        },
-        itemOut(){
-                        // alert('out');
-            this.hoverState = 0;
-        }
-    }
 }
 </script>
 
@@ -66,28 +67,21 @@ export default {
     position: relative;
     margin-top: 20px;
     width: 100vw;
-    height: 100vh;
-    // background-color: #333;
+    height: 1500px;
+    .backTexts{
+        position: absolute;
+        top: 28%;
+        line-height: 2;
+        right: 0;
+        .backText{
+            font-size: 80px;
+            font-weight: 500;
+            color: rgb(220, 220, 220);
+        }
+    }
     .inner{
         width: 80vw;
         margin: auto;
-        .titleBox{
-            height: 100px;
-            .box{
-                position: absolute;
-                width: 50px;
-                height: 50px;
-                background-color: #E5E3C9;
-            }
-            .title{
-                position: absolute;
-                top: 10px;
-                margin-left: 20px;
-                color: #94B49F;
-                font-size: 50px;
-                font-weight: 700;
-            }
-        }
         .contentBox{
             display: grid;
             grid-template-columns: 35vw 35vw;
@@ -96,14 +90,15 @@ export default {
             width: 100%;
             height: 80vh;
             .item{
+                width: 35vw;
                 height: 500px;
                 opacity: 0;
                 transition: .7s;
                 transform: translateY(100px);
-                border: 2px solid #B4CFB0;
                 border-radius: 20px;
+                box-shadow: 4px 12px 30px 6px rgb(231, 231, 231);
                 .itemImage{
-                    border-radius: 20px;
+                    background-size: cover;
                     width: 100%;
                     height: 40%;
                 }
@@ -119,7 +114,7 @@ export default {
                 margin-top: 20%;
             }
             .item.event{
-                opacity: 1;
+                opacity: .8;
                 transform: translateY(0px);
             }
         }
@@ -128,6 +123,7 @@ export default {
         .inner{
             .contentBox{
                 .item{
+                    width: 100%;
                     height: 400px;
                     .itemText{
                         font-size: 16px;
@@ -136,7 +132,13 @@ export default {
             }
         }
     }
-    @media screen and (max-width: 768px){
+}
+@media screen and (max-width: 768px){
+    .contain{
+        height: 1850px;
+        .backTexts{
+            display: none;
+        }
         .inner{
             .contentBox{
                 display: block;

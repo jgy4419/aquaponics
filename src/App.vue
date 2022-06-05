@@ -15,6 +15,28 @@ export default {
 </script>
 
 <style lang="scss">
+.titleBox{
+  .box{
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: #E5E3C9;
+      // transform: rotate(45deg);
+  }
+  .greenTitle{
+      position: relative;
+      top: 10px;
+      margin-left: 20px;
+      color: #94B49F;
+      font-size: 50px;
+      font-weight: 700;
+  }
+  @media screen and (max-width: 900px){
+    .greenTitle{
+      font-size: 35px;
+    }   
+  }
+}
 .btn{
   background-color: #B4CFB0;
   color: #fcf3f3;

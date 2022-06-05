@@ -50,6 +50,11 @@ export default {
             // 햄버거 누르면 옆에 메뉴 생성해주기. + 배경 어둡게 해주기.
             menu.classList.toggle('event');
         },
+    },
+    watch: {
+        '$route' (){
+            document.querySelector('.menu').classList.remove('event');
+        }
     }
 }
 </script>
