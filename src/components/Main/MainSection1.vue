@@ -25,14 +25,6 @@ export default {
         return{
             mainImage1: MainImage1
         }
-    },
-    mounted(){
-        setTimeout(() => {
-            let mainText = document.querySelector('.mainText');
-            let mainImg = document.querySelector(".mainImg");   
-            mainText.classList.add('event');
-            mainImg.classList.add("event");
-        }, 300);
     }
 }
 </script>

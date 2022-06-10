@@ -5,7 +5,7 @@
                 <div class="box"/>
                 <p class="greenTitle">내 손안의 아쿠아포닉스</p>
             </div>
-            <div class="contentBox">
+            <div class="contentBox2">
                 <div class="item" v-for="itemName, i in items.title.length" :key="i">
                     <p class="title">{{items.title[i]}}</p>
                     <button class="btn">{{items.button[i]}}</button>
@@ -24,7 +24,7 @@ export default {
                 button: ['보러가기', '회원가입', '마이페이지']
             }
         }
-    }
+    },
 }
 </script>
 
@@ -41,7 +41,10 @@ export default {
         .titleBox{
             padding-top: 30px;
         }
-        .contentBox{
+        .contentBox2{
+            opacity: 0;
+            transform: translateY(100px);
+            transition: .5s;
             width: 1000px;
             margin: auto;
             display: grid;
@@ -74,16 +77,28 @@ export default {
                 grid-row: 1 / 3;
             }
         }
+        .contentBox2.event{
+            opacity: 1;
+            transform: translateY(0px);
+        }
     }
     @media screen and (max-width: 900px){
         height: 1000px;
         .inner{
-            .contentBox{
+            .contentBox2{
                 display: block;
                 width: 100%;
                 .item{
                     height: 200px;
                     margin-top: 20px;
+                    .title{
+                        font-size: 20px;
+                    }
+                    .btn{
+                        font-size: 16px;
+                        width: 100px;
+                        height: 50px;
+                    }
                 }
             }
         }
