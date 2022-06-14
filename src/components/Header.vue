@@ -54,6 +54,10 @@ export default {
     watch: {
         '$route' (){
             document.querySelector('.menu').classList.remove('event');
+            let line = document.querySelectorAll('.line');
+            for(var i = 0; i < line.length; i++){
+                line[i].classList.remove('event');
+            }
         }
     }
 }
