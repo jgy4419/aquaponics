@@ -44,19 +44,23 @@ export default {
         hamburger(){
             let line = document.querySelectorAll('.line');
             let menu = document.querySelector('.menu');
+            let menuBox = document.querySelector('.menuBox');
             for(var i = 0; i < line.length; i++){
                 line[i].classList.toggle('event');
             }
             // 햄버거 누르면 옆에 메뉴 생성해주기. + 배경 어둡게 해주기.
             menu.classList.toggle('event');
+            menuBox.classList.toggle('event');
         },
     },
     watch: {
         '$route' (){
             document.querySelector('.menu').classList.remove('event');
             let line = document.querySelectorAll('.line');
+            let menuBox = document.querySelector('.menuBox');
             for(var i = 0; i < line.length; i++){
                 line[i].classList.remove('event');
+                menuBox.classList.remove('event');
             }
         }
     }
@@ -65,30 +69,33 @@ export default {
 
 <style lang="scss" scoped>
 .menuBox{
+    position: relative;
+    z-index: 2;
     overflow-x: hidden;
     header{
-    width: 100vw;
-    height: 9vh;
-    // background-color: rgb(215, 215, 215);
+        width: 100vw;
+        // height: 9vh;
+        // background-color: rgb(215, 215, 215);
     .headerBox{
         margin: auto;
         padding-top: 25px;
         width: 80vw;
         display: flex;
         justify-content: space-between;
-        
         .logo{
+            position: relative;
+            z-index: 100;
             font-size: 20px;
             font-weight: 700;
             color: #333;
         }
         // 햄버거 아이콘
         .menuListIcon{
-            position: absolute;
+            position: fixed;
             top: -8px;
             right: 10%;
             cursor: pointer;
-            z-index: 100;
+            z-index: 1000;
             box-sizing: border-box;
             padding: 30px;
             width: 50px;
@@ -147,18 +154,18 @@ export default {
     }
     .menu{
         position: fixed;
-        margin-top: -4.6%;
+        margin-top: -48px;
         z-index: 2;
         opacity: 0;
         width: 100vw;
-        height: 0;
+        height: 100vh;
         background-color: rgba(0, 0, 0, 0.7);
         transition: .7s;
         transform: translateX(100px);
         .inner{
             position: relative;
             width: 70%;
-            height: 91vh;
+            height: 100vh;
             margin: auto;
             ul{
                 position: absolute;
@@ -178,5 +185,11 @@ export default {
         opacity: 1;
         transform: translateX(0px);
     }
+}
+.menuBox.event{
+    z-index: 1000;
+}
+@media screen and (max-width: 1000px){
+
 }
 </style>

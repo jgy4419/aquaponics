@@ -65,7 +65,7 @@ export default {
         margin: auto;
         .contentBox{
             position: relative;
-            z-index: 10;
+            z-index: 2;
             margin-top: 10%;
             display: grid;
             grid-template-columns: 35vw 35vw;
