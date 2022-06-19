@@ -3,10 +3,11 @@ import {createWebHistory, createRouter} from "vue-router";
 import Main from '../components/Main/Main'
 
 // 로그인 페이지
-import Login from '../components/login/Login'
-import Join from '../components/login/Join'
-import SearchId from '../components/login/SearchId'
-import searchPw from '../components/login/SearchPw'
+import Login from '../components/login/Login';
+import Join from '../components/login/Join';
+import SearchId from '../components/login/SearchId';
+import searchPw from '../components/login/SearchPw';
+import About from '../components/about/About'
 
 // 마이페이지 
 import MyPage from '../components/myPage/MyPage'
@@ -36,6 +37,10 @@ const routes = [
     {
         path: "/MyPage",
         component: MyPage
+    },
+    {
+        path: "/about",
+        component: About
     }
 ];
 

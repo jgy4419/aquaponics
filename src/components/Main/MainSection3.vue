@@ -20,8 +20,9 @@ export default {
     data(){
         return{
             items:{
-                title: ['사이트 상세', '시작하기', '나의 아쿠아포닉스'],
-                button: ['보러가기', '회원가입', '마이페이지']
+                title: ['사이트 상세', '시작하기', '사이트 소개'],
+                // 로그인 되면 회원가입 대신 마이페이지로 바꾸기
+                button: ['보러가기', '회원가입', 'About']
             }
         }
     },
@@ -44,7 +45,7 @@ export default {
         .contentBox2{
             opacity: 0;
             transform: translateY(100px);
-            transition: .5s;
+            transition: 1s;
             width: 1000px;
             margin: auto;
             display: grid;

@@ -12,7 +12,7 @@
                 <ChartView class="chart"/>
             </div>
             <div v-if="btnState === 1" class="sensor">
-                <Sensor class="abc"/>
+                <Sensor class="sensorInner"/>
             </div>
             <div v-if="btnState === 2"  class="watch">
                 <Camera/>
@@ -33,18 +33,6 @@ export default {
         ChartView,
         Sensor,
         Camera
-    },
-    mounted(){
-        // var video = document.getElementById("videoElement");
-        // if (navigator.mediaDevices.getUserMedia) {
-        //     navigator.mediaDevices.getUserMedia({ video: true })
-        //     .then(function (stream) {
-        //         video.srcObject = stream;
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
-        // }
     },
     data(){
         return{
@@ -134,7 +122,7 @@ export default {
             display: flex;    
         }
         .sensor{
-            .abc{
+            .sensorInner{
                 width: 100%;
             }
         }

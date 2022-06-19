@@ -8,6 +8,8 @@
 <script>
 export default {
     mounted(){
+        console.log(this.btnState);
+        this.menuState = this.btnState;
         var video = document.querySelector("#videoElement");
         if (navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia({ video: true })
@@ -17,11 +19,8 @@ export default {
             .catch(function (err0r) {
                 console.log("Something went wrong!", err0r);
             });
-        }
-    },
-    watch: {
-        '$route' (){
-            location.reload();
+        }else if(!navigator.mediaDevices.getUserMedia){
+            navigator.mediaDevices.getUserMedia({ video: false })
         }
     }
 }

@@ -73,7 +73,7 @@ export default {
             width: 100%;
             height: 80vh;
             opacity: 0;
-            transition: .5s;
+            transition: 1s;
             transform: translateY(100px);
             .items{
                 opacity: .6;
