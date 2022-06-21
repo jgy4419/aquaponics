@@ -189,7 +189,4 @@ export default {
 .menuBox.event{
     z-index: 1000;
 }
-@media screen and (max-width: 1000px){
-
-}
 </style>

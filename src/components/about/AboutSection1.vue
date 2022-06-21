@@ -5,7 +5,7 @@
             <p class="title">농업의 새로운 재배 기술을 사용해<br/>물고기와 식물을 같이 키우고, 관찰하세요</p>
             <div class="domestic">
                 <div class="left">
-                    <h2 class="chartTitle">국내 현황</h2>
+                    <!-- <h2 class="chartTitle">국내 현황</h2> -->
                     <img class="chartImage" src="../../Image/About/chartImg-removebg-preview.png" alt="차트">
                 </div>
                 <div class="right">
@@ -40,7 +40,7 @@ export default {
         let rafid;
         function render(){
             count.innerHTML = value;
-            value += 5;
+            value += 3;
             rafid = requestAnimationFrame(render);
             if(value > 120){
                 cancelAnimationFrame(rafid);
@@ -56,10 +56,11 @@ export default {
 <style lang="scss" scoped>
 .contain{
     width: 100vw;
-    height: 91vh;
+    height: 100vh;
+    min-height: 800px;
     margin-top: 15px;
     // background-color: #f4f3e9;
-    background: linear-gradient(to right top, #faf7db, #ffffff);
+    background: linear-gradient(to top, #faf7db, #ffffff);
     color: #333;
     .inner{
         width: 80vw;
@@ -77,11 +78,10 @@ export default {
             display: flex;
             justify-content: space-between;
             .left{
-                .chartTitle{
-                    font-size: 30px;
-                }
                 .chartImage{
-                    width: 350px;
+                    // width: 400px;
+                    width: 30vw;
+                    opacity: .3;
                 }
             }
             .content{
@@ -93,6 +93,43 @@ export default {
                 }
                 .boxContent{
                     font-size: 40px;
+                }
+            }
+        }
+        @media screen and (max-width: 1000px){
+            .title{
+                font-size: 40px;
+            }
+            .domestic{
+                .content{
+                    .boxTitle{
+                        font-size: 20px;
+                    }
+                    .boxContent{
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 800px){
+    .contain{
+        height: 100vh;
+        .inner{
+            .title{
+                font-size: 30px;
+            }
+            .domestic{
+                display: block;
+                text-align: center;
+                .content{
+                    .boxTitle{
+                        font-size: 15px;
+                    }
+                    .boxContent{
+                        font-size: 25px;
+                    }
                 }
             }
         }
