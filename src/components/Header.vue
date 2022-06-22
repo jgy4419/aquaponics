@@ -14,7 +14,7 @@
             <div class="inner">
                 <ul>
                     <!-- li 버튼 누르면 메뉴에 이벤트 없어지도록 하기. -->
-                    <router-link v-for="a, i in 2" :key="i" 
+                    <router-link v-for="a, i in headerData.loginBefore.length" :key="i" 
                     :to="headerUrl.loginBefore[i]">
                         <li class="menuList">
                             {{headerData.loginBefore[i]}}
@@ -31,12 +31,12 @@ export default {
     data(){
         return{
             headerData: {
-                loginBefore: ['main', 'login'],
-                loginAfter: ['main', 'myPage', 'logout']
+                loginBefore: ['main', 'login', 'about'],
+                loginAfter: ['main', 'myPage', 'about', 'logout']
             },
             headerUrl: {
-                loginBefore: ['/', '/login'],
-                loginAfter: ['/', '/myPage', '']
+                loginBefore: ['/', '/login', '/about'],
+                loginAfter: ['/', '/myPage', '/about', '']
             }
         }
     },
@@ -163,18 +163,24 @@ export default {
         transition: .7s;
         transform: translateX(100px);
         .inner{
-            position: relative;
-            width: 70%;
+            position: absolute;
+            right: 0;
+            background-color: #789395;
+            width: 30%;
             height: 100vh;
-            margin: auto;
+            // margin: auto;
             ul{
-                position: absolute;
-                right: 0;
+                margin-left: 10%;
                 .menuList{
+                    transition: .3s;
                     margin-top: 80px;
                     font-size: 40px;
+                    font-weight: 500;
                     color: #fff;
                     cursor: pointer;
+                }
+                .menuList:hover{
+                    color: #E5E3C9;
                 }
             }
         }
