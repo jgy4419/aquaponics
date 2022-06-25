@@ -184,6 +184,16 @@ export default {
                 }
             }
         }
+        @media screen and (max-width: 800px){
+            .inner{
+                width: 40%;
+                ul{
+                    .menuList{
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
     }
     .menu.event{
         z-index: 10;

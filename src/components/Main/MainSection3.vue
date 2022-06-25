@@ -1,14 +1,17 @@
 <template>
     <div class="contain">
+        <div class="painting"/>
         <div class="inner">
             <div class="titleBox">
                 <div class="box"/>
-                <p class="greenTitle">내 손안의 아쿠아포닉스</p>
+                <p class="greenTitle">내 손안의 아쿠아포닉스. <br/>바로 시작해봐요!</p>
             </div>
             <div class="contentBox2">
                 <div class="item" v-for="itemName, i in items.title.length" :key="i">
                     <p class="title">{{items.title[i]}}</p>
-                    <button class="btn">{{items.button[i]}}</button>
+                    <router-link :to="items.url[i]">
+                        <button class="btn">{{items.button[i]}}</button>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -20,9 +23,10 @@ export default {
     data(){
         return{
             items:{
-                title: ['사이트 상세', '시작하기', '사이트 소개'],
+                title: ['내 아쿠아 포닉스', '생성하기', '사이트 소개'],
                 // 로그인 되면 회원가입 대신 마이페이지로 바꾸기
-                button: ['보러가기', '회원가입', 'About']
+                button: ['보러가기', '회원가입', 'About'],
+                url: ['/mypage', '/login/join', '/about']
             }
         }
     },
@@ -32,11 +36,23 @@ export default {
 <style lang="scss" scoped>
 .contain{
     position: relative;
-    z-index: 10;
     width: 100vw;
     height: 800px;
     background-color: rgb(242, 242, 242);
+    overflow: hidden;
+    .painting{
+        position: absolute;
+        bottom: 0;
+        right: -20%;
+        transform: skewX(-30deg);
+        width: 50vw;
+        height: 50vh;
+        background-color: #B4CFB0;
+        // transform-origin: bottom, right;
+    }
     .inner{
+        position: relative;
+        z-index: 10;
         width: 80vw;
         margin: auto;
         .titleBox{
@@ -48,13 +64,13 @@ export default {
             transition: 1s;
             width: 1000px;
             margin: auto;
-            display: grid;
+            display: flex;
             margin-top: 10%;
-            grid-template-columns: 400px 500px;
-            grid-template-rows: 200px 200px;
-            grid-gap: 10%;
             .item{
                 position: relative;
+                width: 30%;
+                height: 300px;
+                margin: 10px;
                 border-radius: 20px;
                 padding: 20px;
                 background-color: #fff;
@@ -90,6 +106,7 @@ export default {
                 display: block;
                 width: 100%;
                 .item{
+                    width: 90%;
                     height: 200px;
                     margin-top: 20px;
                     .title{
