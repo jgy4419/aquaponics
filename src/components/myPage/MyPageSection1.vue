@@ -1,7 +1,7 @@
 <template>
     <div class="contain">
         <div class="inner">
-            <img src="https://www.canceranswer.co.kr/news/photo/202109/3045_4820_1253.jpg" alt="이미지">
+            <img :src="img" alt="이미지">
             <ul>
                 <li class="name">
                     {{intro[0]}} : {{introduction.names}}
@@ -15,13 +15,15 @@
 </template>
 
 <script>
+import defaultImage from '../../Image/User/default.png';
 export default {
     props: {
         introduction: Object,
     },
     data(){
         return{
-            intro: ['이름', '소개글']
+            intro: ['이름', '소개글'],
+            img: defaultImage,
         }
     },
 }

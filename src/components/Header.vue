@@ -31,12 +31,12 @@ export default {
     data(){
         return{
             headerData: {
-                loginBefore: ['main', 'login', 'about'],
-                loginAfter: ['main', 'myPage', 'about', 'logout']
+                loginBefore: ['main', 'login', 'reference', 'about'],
+                loginAfter: ['main', 'myPage', 'reference', 'about', 'logout']
             },
             headerUrl: {
-                loginBefore: ['/', '/login', '/about'],
-                loginAfter: ['/', '/myPage', '/about', '']
+                loginBefore: ['/', '/login', '/reference', '/about'],
+                loginAfter: ['/', '/myPage', '/reference', '/about', '']
             }
         }
     },

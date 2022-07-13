@@ -7,11 +7,15 @@ import Login from '../components/login/Login';
 import Join from '../components/login/Join';
 import SearchId from '../components/login/SearchId';
 import searchPw from '../components/login/SearchPw';
+
+// About 페이지
 import About from '../components/about/About'
 
 // 마이페이지 
 import MyPage from '../components/myPage/MyPage'
 
+// 자료실
+import Reference from '../components/reference/Reference';
 
 const routes = [
     {
@@ -41,6 +45,10 @@ const routes = [
     {
         path: "/about",
         component: About
+    },
+    {
+        path: "/reference",
+        component: Reference
     }
 ];
 
