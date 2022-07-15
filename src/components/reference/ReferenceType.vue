@@ -1,5 +1,9 @@
 <template>
     <div class="reference-type-contain">
+        <!-- props로 보낼 때 this. 붙여주기 -->
+        <!-- 자식한테 state라는 메시지를 받으몀ㄴ modalState를 0으로 변경해달라는 뜻. -->
+        <ReferenceDetail @state="modalState = 0" class="detailModal"
+         v-if="modalState === 1" :modalState="this.modalState"/>
         <div class="typeState">
             <ul>
                 <li v-for="data, i in type.modal.length" :key="i"
@@ -7,14 +11,14 @@
             </ul>
         </div>
         <div class="systemData" v-if="type.state === 0">
-            <div class="dataBox" v-for="data, i in systemData.name.length" :key="i"
+            <div class="dataBox" @click="modalState = 1" v-for="data, i in systemData.name.length" :key="i"
             :style="{backgroundImage: `url(${systemData.imgUrl[i]}`}">
                 <div class="backColor"/>
                 <p class="dataTitle">{{systemData.name[i]}}</p>
             </div>
         </div>
         <div class="piscesData" v-if="type.state === 1">
-            <div class="dataBox" v-for="data, i in piscesData.name.length" :key="i"
+            <div class="dataBox" @click="modalState = 1" v-for="data, i in piscesData.name.length" :key="i"
             :style="{backgroundImage: `url(${piscesData.imgUrl[i]}`}">
                 <div class="backColor"/>
                 <p class="dataTitle">{{piscesData.name[i]}}</p>
@@ -26,7 +30,11 @@
 <script>
 // 자료실에 있는 데이터 불러오기.
 import data from '../../referenceData.json';
+import ReferenceDetail from './ReferenceDetail.vue';
 export default {
+    components:{
+        ReferenceDetail,
+    },
     data(){
         return{
             type: {
@@ -43,6 +51,7 @@ export default {
                 description: [],
                 imgUrl: []
             },
+            modalState: 0,
         }
     },
     mounted(){
