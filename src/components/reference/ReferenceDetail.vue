@@ -4,10 +4,11 @@
         <div class="inner">
             <!-- 부모한테 state라는 메시지를 보내기 => ReferenceType.vue -->
             <p @click="$emit('state')" class="close">X</p>
-            <img src="https://t1.daumcdn.net/cfile/tistory/99C96B395B4C3F5C20" alt="받은 데이터 사진">
+            <h1 class="name">{{name}}</h1>
+            <img :src="this.img" alt="받은 데이터 사진">
             <div class="description">
                 <h2>설명</h2>
-                <p class="descriptionText">스티로폼에 구멍을 뚫어 식물을 넣고 물에 띄워 재배하는 방식.</p>
+                <p class="descriptionText">{{description}}</p>
             </div>
             <div class="advantages">
                 <h2>장점</h2>
@@ -28,7 +29,10 @@ export default {
         'modalState'
     ],
     props: {
-        modalState: Number
+        modalState: Number,
+        name: String,
+        img: String,
+        description: String
     },
 }
 </script>
@@ -66,10 +70,15 @@ export default {
                 font-weight: 700;
                 cursor: pointer;
             }
+            .name{
+                margin-top: 30px;
+                font-size: 30px;
+            }
             img{
                 width: 450px;
                 height: 300px;
-                margin-top: 30px;
+                margin-top: 20px;
+                border-radius: 20px;
             }
             .description, .advantages, .disadvantages{
                 margin: auto;

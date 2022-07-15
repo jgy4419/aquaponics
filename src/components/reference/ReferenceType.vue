@@ -3,7 +3,11 @@
         <!-- props로 보낼 때 this. 붙여주기 -->
         <!-- 자식한테 state라는 메시지를 받으몀ㄴ modalState를 0으로 변경해달라는 뜻. -->
         <ReferenceDetail @state="modalState = 0" class="detailModal"
-         v-if="modalState === 1" :modalState="this.modalState"/>
+         v-if="modalState === 1" 
+         :modalState="this.modalState"
+         :name="this.modalData.name"
+         :img="this.modalData.img"
+         :description="this.modalData.description"/>
         <div class="typeState">
             <ul>
                 <li v-for="data, i in type.modal.length" :key="i"
@@ -11,14 +15,14 @@
             </ul>
         </div>
         <div class="systemData" v-if="type.state === 0">
-            <div class="dataBox" @click="modalState = 1" v-for="data, i in systemData.name.length" :key="i"
+            <div class="dataBox" @click="openModal(i, 0)" v-for="data, i in systemData.name.length" :key="i"
             :style="{backgroundImage: `url(${systemData.imgUrl[i]}`}">
                 <div class="backColor"/>
                 <p class="dataTitle">{{systemData.name[i]}}</p>
             </div>
         </div>
         <div class="piscesData" v-if="type.state === 1">
-            <div class="dataBox" @click="modalState = 1" v-for="data, i in piscesData.name.length" :key="i"
+            <div class="dataBox" @click="openModal(i, 1)" v-for="data, i in piscesData.name.length" :key="i"
             :style="{backgroundImage: `url(${piscesData.imgUrl[i]}`}">
                 <div class="backColor"/>
                 <p class="dataTitle">{{piscesData.name[i]}}</p>
@@ -41,17 +45,24 @@ export default {
                 state: 0,
                 modal: ['구조', '물고기']
             },
-            systemData:{
+            systemData: {
                 name: [],
                 description: [],
                 imgUrl: []
             },
-            piscesData:{
+            piscesData: {
                 name: [],
                 description: [],
                 imgUrl: []
             },
             modalState: 0,
+            modalData: {
+                name: '',
+                img: '',
+                description: '',
+                advantages: '',
+                disadvantages: ''
+            }
         }
     },
     mounted(){
@@ -67,6 +78,25 @@ export default {
             this.piscesData.imgUrl.push(data.pisces[i].img);
         }
         console.log(this.piscesData);
+    },
+    methods: {
+        // 첫 번째 인자는 어디 클릭했는지 두 번째 인자는 구조 Modal에서 클릭했는지 물고기 Modal에서 클릭했는지 구분 시켜준다.
+        openModal(index, open){
+            // 모달 열어주고 클릭한 부분의 데이터를 this.modalData객체 안에 넣어준다.
+            this.modalState = 1; 
+            // call이나 apply써서 객체를 동적으로 넣어보기.
+            // console.log(index, open);
+            if(open === 0){
+                this.modalData.name = this.systemData.name[index];
+                this.modalData.img = this.systemData.imgUrl[index];
+                this.modalData.description = this.systemData.description[index];
+                console.log(this.modalData.name, this.modalData.img, this.modalData.description);
+            }else if(open === 1){
+                this.modalData.name = this.piscesData.name[index];
+                this.modalData.img = this.piscesData.imgUrl[index];
+                this.modalData.description = this.piscesData.description[index];
+            }
+        }
     }
 }
 </script>
