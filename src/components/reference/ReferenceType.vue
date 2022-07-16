@@ -7,10 +7,13 @@
          :modalState="this.modalState"
          :name="this.modalData.name"
          :img="this.modalData.img"
-         :description="this.modalData.description"/>
+         :description="this.modalData.description"
+         :advantages="this.modalData.advantages"
+         :disadvantages="this.modalData.disadvantages"
+         :typeState="this.type.state"/>
         <div class="typeState">
             <ul>
-                <li v-for="data, i in type.modal.length" :key="i"
+                <li class="stateBtn" v-for="data, i in type.modal.length" :key="i"
                 @click="type.state = i">{{type.modal[i]}}</li>
             </ul>
         </div>
@@ -48,7 +51,9 @@ export default {
             systemData: {
                 name: [],
                 description: [],
-                imgUrl: []
+                imgUrl: [],
+                advantages: [],
+                disadvantages: []
             },
             piscesData: {
                 name: [],
@@ -66,11 +71,12 @@ export default {
         }
     },
     mounted(){
-        console.log(data);
         for(let i = 0; i < data.system.length; i++){
             this.systemData.name.push(data.system[i].name);
             this.systemData.description.push(data.system[i].description);
             this.systemData.imgUrl.push(data.system[i].img);
+            this.systemData.advantages.push(data.system[i].advantages);
+            this.systemData.disadvantages.push(data.system[i].disadvantages);
         }
         for(let i = 0; i < data.pisces.length; i++){
             this.piscesData.name.push(data.pisces[i].name);
@@ -90,7 +96,9 @@ export default {
                 this.modalData.name = this.systemData.name[index];
                 this.modalData.img = this.systemData.imgUrl[index];
                 this.modalData.description = this.systemData.description[index];
-                console.log(this.modalData.name, this.modalData.img, this.modalData.description);
+                this.modalData.advantages = this.systemData.advantages[index];
+                this.modalData.disadvantages = this.systemData.disadvantages[index];
+                console.log(this.modalData.disadvantages);
             }else if(open === 1){
                 this.modalData.name = this.piscesData.name[index];
                 this.modalData.img = this.piscesData.imgUrl[index];
@@ -123,8 +131,12 @@ export default {
                     font-weight: 700;
                     color: #fff;
                     background-color: #B4CFB0;
+                    transition: .3s;
                     border-radius: 5px;
                     cursor: pointer;
+                }
+                li:hover{
+                    background-color: #E5E3C9;
                 }
             }
         }

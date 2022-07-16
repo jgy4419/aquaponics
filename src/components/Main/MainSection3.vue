@@ -23,10 +23,10 @@ export default {
     data(){
         return{
             items:{
-                title: ['내 아쿠아 포닉스', '생성하기', '사이트 소개'],
+                title: ['내 아쿠아 포닉스', '아쿠아포닉스 추천받기', '사이트 소개'],
                 // 로그인 되면 회원가입 대신 마이페이지로 바꾸기
-                button: ['보러가기', '회원가입', 'About'],
-                url: ['/mypage', '/login/join', '/about']
+                button: ['보러가기', 'reference', 'About'],
+                url: ['/mypage', '/reference', '/about']
             }
         }
     },
@@ -36,6 +36,7 @@ export default {
 <style lang="scss" scoped>
 .contain{
     position: relative;
+    z-index: 2;
     width: 100vw;
     height: 800px;
     background-color: rgb(242, 242, 242);

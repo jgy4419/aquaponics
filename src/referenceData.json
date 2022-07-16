@@ -2,31 +2,39 @@
     "system": [
         {
             "name": "Rafting(레프팅) 시스템",
-            "description": "스티로폼에 구멍을 뚫어 식물을 넣고 물에 띄워 재배하는 방식.",
+            "description": [
+                "스티로폼에 구멍을 뚫어 식물을 넣고 물에 띄워 재배하는 방식."
+            ],
             "img": "https://t1.daumcdn.net/cfile/tistory/99C96B395B4C3F5C20",
-            "Advantages": "상업적 규모에 적합. 식물과 물고기에서 많은 수확이 가능.",
-            "disadvantage": "고형물을 걸러내는 필터가 필요하고 열매 없는 잎채소만 재배가능."
+            "advantages": "상업적 규모에 적합. 식물과 물고기에서 많은 수확이 가능.",
+            "disadvantages": "고형물을 걸러내는 필터가 필요하고 열매 없는 잎채소만 재배가능."
         },
         {
             "name": "Growing Power 시스템",
-            "description": "긴 물고기 양식 탱크 위에 다 층의 식물 재배지를 설치한 유형의 시스템.",
+            "description": [
+                "긴 물고기 양식 탱크 위에 다 층의 식물 재배지를 설치한 유형의 시스템."
+            ],
             "img": "https://t1.daumcdn.net/cfile/tistory/991AD9365B4C400528",
-            "Advantages": "여러가지 식물을 키울 수 있다. 부품구하기가 용이하다.",
-            "disadvantage": "험기화 될 수 있다. 퇴비를 사용하면 물이 검은 색으로 변해 물고기를 볼 수 없다."
+            "advantages": "여러가지 식물을 키울 수 있다. 부품구하기가 용이하다.",
+            "disadvantages": "험기화 될 수 있다. 퇴비를 사용하면 물이 검은 색으로 변해 물고기를 볼 수 없다."
         },
         {
             "name": "NFT 시스템",
-            "description": "뿌리가 물에 일부만 잠긴 상태로 재배하는 방법으로 주로 PVC 배관을 이용해 재배하는 방법.",
+            "description": [
+                "뿌리가 물에 일부만 잠긴 상태로 재배하는 방법으로 주로 PVC 배관을 이용해 재배하는 방법."
+            ],
             "img": "https://t1.daumcdn.net/cfile/tistory/9954483D5B4C414832",
-            "Advantages": "재료를 쉽게 구할 수 있다. 재배 조건을 세밀하게 조절할 수 있다.",
-            "disadvantage": "고형물을 걸러내는 필터가 필요하다. 열매 없는 잎 채소만 재배가 가능하다."
+            "advantages": "재료를 쉽게 구할 수 있다. 재배 조건을 세밀하게 조절할 수 있다.",
+            "disadvantages": "고형물을 걸러내는 필터가 필요하다. 열매 없는 잎 채소만 재배가 가능하다."
         },
         {
             "name": "Tower & Vertigro 시스템",
-            "description": "수직관으로 재배하는 방법",
+            "description": [
+                "수직관으로 재배하는 방법"
+            ],
             "img": "https://t1.daumcdn.net/cfile/tistory/9909C8365B4C411D2E",
-            "Advantages": "",
-            "disadvantage": ""
+            "advantages": "",
+            "disadvantages": ""
         }
     ],
     "pisces": [

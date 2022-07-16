@@ -6,17 +6,20 @@
             <p @click="$emit('state')" class="close">X</p>
             <h1 class="name">{{name}}</h1>
             <img :src="this.img" alt="받은 데이터 사진">
+
             <div class="description">
                 <h2>설명</h2>
-                <p class="descriptionText">{{description}}</p>
+                <p v-for="description in description" :key="description" class="descriptionText">{{description}}</p>
             </div>
-            <div class="advantages">
-                <h2>장점</h2>
-                <p class="advantagesText">상업적 규모에 적합. 식물과 물고기에서 많은 수확이 가능.</p>
-            </div>
-            <div class="disadvantages">
-                <h2>단점</h2>
-                <p class="disadvantagesText">고형물을 걸러내는 필터가 필요하고 열매 없는 잎채소만 재배가능.</p>
+            <div class="pros-and-cons">
+                <div class="advantages">
+                    <h2>장점</h2>
+                    <p class="advantagesText">{{advantages}}</p>
+                </div>
+                <div class="disadvantages">
+                    <h2>단점</h2>
+                    <p class="disadvantagesText">{{disadvantages}}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -32,8 +35,17 @@ export default {
         modalState: Number,
         name: String,
         img: String,
-        description: String
+        description: String,
+        advantages: String,
+        disadvantages: String,
+        typeState: Number,
     },
+    mounted(){
+        console.log(this.typeState);
+        if(this.typeState === 1){
+            document.querySelector('.pros-and-cons').style.display = 'none';
+        }
+    }
 }
 </script>
 

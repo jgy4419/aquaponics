@@ -161,7 +161,7 @@ export default {
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.7);
         transition: .7s;
-        transform: translateX(100px);
+        transform: translateX(400px);
         .inner{
             position: absolute;
             right: 0;
