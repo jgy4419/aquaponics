@@ -11,6 +11,7 @@
          :advantages="this.modalData.advantages"
          :disadvantages="this.modalData.disadvantages"
          :typeState="this.type.state"/>
+         <!-- <ReferenceDetail/> -->
         <div class="typeState">
             <ul>
                 <li class="stateBtn" v-for="data, i in type.modal.length" :key="i"
@@ -18,17 +19,17 @@
             </ul>
         </div>
         <div class="systemData" v-if="type.state === 0">
-            <div class="dataBox" @click="openModal(i, 0)" v-for="data, i in systemData.name.length" :key="i"
-            :style="{backgroundImage: `url(${systemData.imgUrl[i]}`}">
+            <div class="dataBox" @click="openModal(i, 0)" v-for="data, i in datas.system.length" :key="i"
+            :style="{backgroundImage: `url(${datas.system[i].img})`}">
                 <div class="backColor"/>
-                <p class="dataTitle">{{systemData.name[i]}}</p>
+                <p class="dataTitle">{{datas.system[i].name}}</p>
             </div>
         </div>
         <div class="piscesData" v-if="type.state === 1">
-            <div class="dataBox" @click="openModal(i, 1)" v-for="data, i in piscesData.name.length" :key="i"
-            :style="{backgroundImage: `url(${piscesData.imgUrl[i]}`}">
+            <div class="dataBox" @click="openModal(i, 1)" v-for="data, i in datas.pisces.length" :key="i"
+            :style="{backgroundImage: `url(${datas.pisces[i].img})`}">
                 <div class="backColor"/>
-                <p class="dataTitle">{{piscesData.name[i]}}</p>
+                <p class="dataTitle">{{datas.pisces[i].name}}</p>
             </div>
         </div>
     </div>
@@ -48,18 +49,7 @@ export default {
                 state: 0,
                 modal: ['구조', '물고기']
             },
-            systemData: {
-                name: [],
-                description: [],
-                imgUrl: [],
-                advantages: [],
-                disadvantages: []
-            },
-            piscesData: {
-                name: [],
-                description: [],
-                imgUrl: []
-            },
+            datas: [],
             modalState: 0,
             modalData: {
                 name: '',
@@ -67,42 +57,37 @@ export default {
                 description: '',
                 advantages: '',
                 disadvantages: ''
-            }
+            },
+            resModal: ''
         }
     },
-    mounted(){
-        for(let i = 0; i < data.system.length; i++){
-            this.systemData.name.push(data.system[i].name);
-            this.systemData.description.push(data.system[i].description);
-            this.systemData.imgUrl.push(data.system[i].img);
-            this.systemData.advantages.push(data.system[i].advantages);
-            this.systemData.disadvantages.push(data.system[i].disadvantages);
-        }
-        for(let i = 0; i < data.pisces.length; i++){
-            this.piscesData.name.push(data.pisces[i].name);
-            this.piscesData.description.push(data.pisces[i].description);
-            this.piscesData.imgUrl.push(data.pisces[i].img);
-        }
-        console.log(this.piscesData);
+    created(){
+        this.datas = JSON.stringify(data);
+        this.datas = JSON.parse(this.datas);
     },
     methods: {
         // 첫 번째 인자는 어디 클릭했는지 두 번째 인자는 구조 Modal에서 클릭했는지 물고기 Modal에서 클릭했는지 구분 시켜준다.
         openModal(index, open){
             // 모달 열어주고 클릭한 부분의 데이터를 this.modalData객체 안에 넣어준다.
             this.modalState = 1; 
-            // call이나 apply써서 객체를 동적으로 넣어보기.
-            // console.log(index, open);
             if(open === 0){
-                this.modalData.name = this.systemData.name[index];
-                this.modalData.img = this.systemData.imgUrl[index];
-                this.modalData.description = this.systemData.description[index];
-                this.modalData.advantages = this.systemData.advantages[index];
-                this.modalData.disadvantages = this.systemData.disadvantages[index];
-                console.log(this.modalData.disadvantages);
+                // let propsValue = Object.values(this.datas.system[index]);
+                // let propsKey = this.modalData;
+                // console.log(propsKey);
+                // console.log(Object.assign(propsKey, propsValue));
+                // this.modalData = Object.assign(propsKey, propsValue);
+                // Object.keys(this.modalData) = Object.values(this.datas.system)
+                this.modalData.name = this.datas.system[index].name;
+                this.modalData.img = this.datas.system[index].img;
+                this.modalData.description = this.datas.system[index].description;
+                this.modalData.advantages = this.datas.system[index].advantages;
+                this.modalData.disadvantages = this.datas.system[index].disadvantages;
+                console.log(this.modalData);
             }else if(open === 1){
-                this.modalData.name = this.piscesData.name[index];
-                this.modalData.img = this.piscesData.imgUrl[index];
-                this.modalData.description = this.piscesData.description[index];
+                this.modalData.name = this.datas.pisces[index].name;
+                this.modalData.img = this.datas.pisces[index].img;
+                this.modalData.description = this.datas.pisces[index].description;
+                console.log(this.modalData);
             }
         }
     }
