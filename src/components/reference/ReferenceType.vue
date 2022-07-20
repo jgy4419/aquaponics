@@ -5,12 +5,9 @@
         <ReferenceDetail @state="modalState = 0" class="detailModal"
          v-if="modalState === 1" 
          :modalState="this.modalState"
-         :name="this.modalData.name"
-         :img="this.modalData.img"
-         :description="this.modalData.description"
-         :advantages="this.modalData.advantages"
-         :disadvantages="this.modalData.disadvantages"
-         :typeState="this.type.state"/>
+         :typeState="this.type.state"
+         :datas="this.datas"
+         :dataIndex="this.dataIndex"/>
          <!-- <ReferenceDetail/> -->
         <div class="typeState">
             <ul>
@@ -19,14 +16,14 @@
             </ul>
         </div>
         <div class="systemData" v-if="type.state === 0">
-            <div class="dataBox" @click="openModal(i, 0)" v-for="data, i in datas.system.length" :key="i"
+            <div class="dataBox" @click="openModal(i)" v-for="data, i in datas.system.length" :key="i"
             :style="{backgroundImage: `url(${datas.system[i].img})`}">
                 <div class="backColor"/>
                 <p class="dataTitle">{{datas.system[i].name}}</p>
             </div>
         </div>
         <div class="piscesData" v-if="type.state === 1">
-            <div class="dataBox" @click="openModal(i, 1)" v-for="data, i in datas.pisces.length" :key="i"
+            <div class="dataBox" @click="openModal(i)" v-for="data, i in datas.pisces.length" :key="i"
             :style="{backgroundImage: `url(${datas.pisces[i].img})`}">
                 <div class="backColor"/>
                 <p class="dataTitle">{{datas.pisces[i].name}}</p>
@@ -51,44 +48,20 @@ export default {
             },
             datas: [],
             modalState: 0,
-            modalData: {
-                name: '',
-                img: '',
-                description: '',
-                advantages: '',
-                disadvantages: ''
-            },
-            resModal: ''
+            resModal: '',
+            dataIndex: 0,
+            
         }
     },
     created(){
-        this.datas = JSON.stringify(data);
-        this.datas = JSON.parse(this.datas);
+        this.datas = data;
     },
     methods: {
         // 첫 번째 인자는 어디 클릭했는지 두 번째 인자는 구조 Modal에서 클릭했는지 물고기 Modal에서 클릭했는지 구분 시켜준다.
-        openModal(index, open){
+        openModal(index){
             // 모달 열어주고 클릭한 부분의 데이터를 this.modalData객체 안에 넣어준다.
             this.modalState = 1; 
-            if(open === 0){
-                // let propsValue = Object.values(this.datas.system[index]);
-                // let propsKey = this.modalData;
-                // console.log(propsKey);
-                // console.log(Object.assign(propsKey, propsValue));
-                // this.modalData = Object.assign(propsKey, propsValue);
-                // Object.keys(this.modalData) = Object.values(this.datas.system)
-                this.modalData.name = this.datas.system[index].name;
-                this.modalData.img = this.datas.system[index].img;
-                this.modalData.description = this.datas.system[index].description;
-                this.modalData.advantages = this.datas.system[index].advantages;
-                this.modalData.disadvantages = this.datas.system[index].disadvantages;
-                console.log(this.modalData);
-            }else if(open === 1){
-                this.modalData.name = this.datas.pisces[index].name;
-                this.modalData.img = this.datas.pisces[index].img;
-                this.modalData.description = this.datas.pisces[index].description;
-                console.log(this.modalData);
-            }
+            this.dataIndex = index;
         }
     }
 }

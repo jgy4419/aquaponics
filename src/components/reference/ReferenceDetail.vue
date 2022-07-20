@@ -4,21 +4,21 @@
         <div class="inner">
             <!-- 부모한테 state라는 메시지를 보내기 => ReferenceType.vue -->
             <p @click="$emit('state')" class="close">X</p>
-            <h1 class="name">{{name}}</h1>
-            <img :src="this.img" alt="받은 데이터 사진">
+            <h1 class="name">{{propsData.name}}</h1>
+            <img :src="propsData.img" alt="받은 데이터 사진">
 
             <div class="description">
                 <h2>설명</h2>
-                <p v-for="description in description" :key="description" class="descriptionText">{{description}}</p>
+                <p v-for="description in propsData.description" :key="description" class="descriptionText">{{description}}</p>
             </div>
             <div class="pros-and-cons">
                 <div class="advantages">
                     <h2>장점</h2>
-                    <p class="advantagesText">{{advantages}}</p>
+                    <p class="advantagesText">{{propsData.advantages}}</p>
                 </div>
                 <div class="disadvantages">
                     <h2>단점</h2>
-                    <p class="disadvantagesText">{{disadvantages}}</p>
+                    <p class="disadvantagesText">{{propsData.disadvantages}}</p>
                 </div>
             </div>
         </div>
@@ -31,19 +31,23 @@ export default {
     emits: [
         'modalState'
     ],
+    data(){
+        return{
+            propsData: {},
+        }
+    },
     props: {
-        modalState: Number,
-        name: String,
-        img: String,
-        description: String,
-        advantages: String,
-        disadvantages: String,
         typeState: Number,
+        modalState: Number,
+        datas: Array,
+        dataIndex: Number
     },
     mounted(){
-        console.log(this.typeState);
         if(this.typeState === 1){
             document.querySelector('.pros-and-cons').style.display = 'none';
+            this.propsData = this.datas.pisces[this.dataIndex];
+        }else if(this.typeState === 0){
+            this.propsData = this.datas.system[this.dataIndex];
         }
     }
 }
