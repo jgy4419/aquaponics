@@ -4,13 +4,13 @@
             <section class="sectionHead">
                 <p class="subTitle">Reference</p>
                 <h1 class="mainTitle">자료실</h1>
-                <hr/>
-                <div class="description">
+                <!-- <hr/> -->
+                <!-- <div class="description">
                     <p>
                         처음 아쿠아포닉스를 키우시는 분들이 어떤 구조로 만들면 좋을지, 또는 어떤 어류를 같이 키워야 좋은지를
                         알 수 있는 자료들이 있는 페이지입니다.
                     </p> 
-                </div>
+                </div> -->
             </section>
             <ReferenceType/>
         </div>
