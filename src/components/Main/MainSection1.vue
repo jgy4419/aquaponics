@@ -32,7 +32,7 @@ export default {
 <style lang="scss" scoped>
 .contain{
     width: 100vw;
-    height: 90vh;
+    height: 800px;
     .inner{
         position: relative;
         top: 15vh;
@@ -81,7 +81,6 @@ export default {
             opacity: 0;
             transform: translateX(120px);
             transition: 2s;
-
             right: 0;
         }
         .mainImg.event{
@@ -93,7 +92,7 @@ export default {
 @media screen and (max-width: 1000px){
     .contain{
         width: 100vw;
-        height: 90vh;
+        height: 800px;
         background-image: url('../../Image/Main/MainImage1.png');
         background-repeat: no-repeat;
         background-size: cover;

@@ -10,6 +10,10 @@
 import Section1 from './MainSection1';
 import Section2 from './MainSection2';
 import Section3 from './MainSection3';
+
+// import _ from 'lodash';
+// lodash 써서 스크롤 최적화 하기
+
 export default {
     components: {
         Section1,
@@ -27,7 +31,6 @@ export default {
         let screenHeight = document.documentElement.scrollHeight;
         let contentBox = document.querySelector('.contentBox');
         let contentBox2 = document.querySelector('.contentBox2');
-
         document.addEventListener('scroll', function(){
             let currentScrollValue = document.documentElement.scrollTop;
             if(currentScrollValue > screenHeight / 1.5){
@@ -38,7 +41,7 @@ export default {
                 contentBox.classList.remove('event');
                 contentBox2.classList.remove('event');
             }
-        })
+        })  
     }
 }
 </script>

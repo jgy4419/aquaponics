@@ -125,9 +125,12 @@ export default {
                     opacity: 0;
                 }
                 .dataTitle{
-                    position: absolute; 
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
                     top: 40%;
-                    width: 400px;
+                    width: 80%;
                     height: 300px;
                     color: #fff;
                     font-size: 30px;
@@ -143,6 +146,23 @@ export default {
                 .dataTitle{
                     opacity: 1;
                     transform: translateY(0px);
+                }
+            }
+        }
+        @media screen and (max-width: 900px){
+            .typeState ul li{
+                font-size: 16px;
+                width: 70px;
+                height: 50px;
+            }
+            .systemData, .piscesData{
+                .dataBox{
+                    width: 100%;
+                    .dataTitle {
+                        @media screen and (max-width: 700px){
+                            font-size: 20px;
+                        }
+                    }
                 }
             }
         }

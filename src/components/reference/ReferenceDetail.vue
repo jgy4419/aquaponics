@@ -114,5 +114,28 @@ export default {
                 }
             }
         }
+        @media screen and (max-width: 900px){
+            .inner{
+                width: 90%;
+                .close{
+                    font-size: 25px;
+                }
+                .name{
+                    font-size: 20px;
+                }
+                img{
+                    width: 80%;
+                    height: 280px;
+                }
+                .description, .advantages, .disadvantages{
+                    h2{
+                        font-size: 20px;
+                    }
+                    .descriptionText, .advantagesText, .disadvantagesText{
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
     }
 </style>
