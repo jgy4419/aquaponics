@@ -5,22 +5,31 @@
         <br>
         <hr>
         <div class="inner">
-            <div class="sensor"
+            <div class="sensor" @click="modalOpen()"
             v-for="sensor, i in sensorList.length" :key="i">
                 <h2>{{sensorList[i]}}</h2>
                 <p>{{sensorValue[i]}}</p>
             </div>
         </div>
+        <SensorDetail 
+        :sensorModalState="this.sensorModalState" 
+        @state="sensorModalState = 0"
+        v-if="sensorModalState === 1"/>
     </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
+import SensorDetail from './SensorDetail.vue';
 export default {
+    components: {
+        SensorDetail,
+    },
     data(){
         return{
             sensorList:['물고기 상태', '물 상태', '식물 상태'],
             sensorValue: [],
+            sensorModalState: 0,
         }
     },
     mounted(){
@@ -38,6 +47,11 @@ export default {
         .catch(err => {
             console.log(err);
         })
+    },
+    methods: {
+        modalOpen(){
+            this.sensorModalState = 1
+        }
     }
 }
 </script>

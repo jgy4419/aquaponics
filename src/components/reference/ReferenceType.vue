@@ -70,7 +70,7 @@ export default {
 <style lang="scss" scoped>
     .reference-type-contain{
         position: relative;
-        z-index: 2;
+        // z-index: 2;
         width: 80vw;
         height: 500px;
         .typeState{
@@ -109,6 +109,7 @@ export default {
             // background-color: #333;
             .dataBox{
                 position: relative;
+                z-index: 2;
                 width: 400px;
                 height: 300px;
                 margin: 10px;

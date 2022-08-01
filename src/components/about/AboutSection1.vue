@@ -35,6 +35,7 @@ export default {
         }
     },
     mounted(){
+        window.scrollTo(0, 0);
         const count = document.querySelector('.count');
         let value = 0;
         let rafid;

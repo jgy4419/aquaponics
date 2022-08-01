@@ -7,7 +7,12 @@
 import Menu from './components/Header.vue'
 
 export default {
-  name: 'App',
+  name  : 'App',
+  mounted(){
+    window.addEventListener('scroll', () => {
+      
+    })
+  },
   components: {
     Menu,
   }

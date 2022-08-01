@@ -20,11 +20,15 @@
 <script>
 // UI 참고 사이트 http://shimlee.co.kr/ 
 import MainImage1 from '../../Image/Main/MainImage1.png'
+import { scrollTop } from '../multiFunc/scrollTop';
 export default {
     data(){
         return{
             mainImage1: MainImage1
         }
+    },
+    mounted(){
+        scrollTop('contain');
     }
 }
 </script>
