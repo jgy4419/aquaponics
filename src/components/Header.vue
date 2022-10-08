@@ -3,7 +3,7 @@
         <header>
             <div class="headerBox">
                 <router-link to="/">
-                    <p class="logo">로고</p>
+                    <img class="logo" :src="logo"/>
                 </router-link>
                 <div class="menuListIcon" @click="hamburger()">
                     <div class="line" v-for="a in 3" :key="a"></div>
@@ -27,15 +27,17 @@
 </template>
 
 <script>
+import Logo from '../assets/aquaponicsLogo.png';
 export default {
     data(){
         return{
+            logo: Logo,
             headerData: {
-                loginBefore: ['main', 'login', 'reference', 'about'],
+                loginBefore: ['main', 'myPage', 'reference', 'about'],
                 loginAfter: ['main', 'myPage', 'reference', 'about', 'logout']
             },
             headerUrl: {
-                loginBefore: ['/', '/login', '/reference', '/about'],
+                loginBefore: ['/', '/myPage', '/reference', '/about'],
                 loginAfter: ['/', '/myPage', '/reference', '/about', '']
             }
         }
@@ -70,7 +72,7 @@ export default {
 <style lang="scss" scoped>
 .menuBox{
     position: relative;
-    z-index: 2;
+    z-index: 100;
     overflow-x: hidden;
     header{
         width: 100vw;
@@ -83,11 +85,14 @@ export default {
         display: flex;
         justify-content: space-between;
         .logo{
-            position: relative;
-            z-index: 100;
-            font-size: 20px;
-            font-weight: 700;
-            color: #333;
+            position: fixed;
+            width: 50px;
+        }
+        @media screen and (max-width: 700px){
+            .logo{
+                width: 40px;
+                height: 40px;
+            }
         }
         // 햄버거 아이콘
         .menuListIcon{
@@ -154,7 +159,7 @@ export default {
     }
     .menu{
         position: fixed;
-        margin-top: -48px;
+        top: 0;
         z-index: 2;
         opacity: 0;
         width: 100vw;

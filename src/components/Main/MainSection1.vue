@@ -6,7 +6,7 @@
                     <div class="title">Home<br/>Aquaponics</div>
                     <p class="serve">아쿠아포닉스를 집에서 키우고 관리하세요!</p>
                 </div>
-                <router-link to="/login">
+                <router-link to="/mypage">
                     <button class="btn">
                         시작하기
                     </button>   
@@ -108,6 +108,11 @@ export default {
                 .title{
                     font-size: 60px;
                 }
+                @media screen and (max-width: 800px){
+                    .title{
+                        font-size: 40px;
+                    }
+                }
                 .serve{
                     font-size: 14px;
                 }
@@ -123,14 +128,20 @@ export default {
         }
     }
 }
-@media screen and (max-width: 365px){
+@media screen and (max-width: 400px){
     .contain{
+        // height: 100%;
         .inner{
-            .title{
-                font-size: 20px;
-            }
-            .serve{
-                font-size: 12px;
+            .titleBox{
+                .mainText{
+                    .title{
+                        font-size: 50px;
+                        line-height: 1.2;
+                    }
+                    .serve{
+                        font-size: 12px;
+                    }
+                }
             }
             .btn{
                 width: 80px;

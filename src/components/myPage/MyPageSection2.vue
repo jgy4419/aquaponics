@@ -1,16 +1,12 @@
 <template>
     <div class="contain">
         <div class="inner">
-            <div class="btns">
-                <button class="btn" 
-                    @click="btnClick(i)"
-                    v-for="btns, i in btnList" :key="i">
-                    {{btns}}
-                </button>
+            <div v-if="btnState === 0" class="sensor">
+                <Sensor class="sensorInner"/>
             </div>
-            <div v-if="btnState === 0" class="graph">
+            <!-- <div v-if="btnState === 0" class="graph">
                 <ChartView class="chart"/>
-            </div>
+            </div> -->
             <div v-if="btnState === 1" class="sensor">
                 <Sensor class="sensorInner"/>
             </div>
@@ -23,20 +19,21 @@
 </template>
 
 <script>
-import ChartView from './ChartView.vue';
+// import ChartView from './ChartView.vue';
 import Sensor from './SensorValue.vue';
 import Camera from './Camera.vue';
 export default {
     name: "line-chart",
     type: "line",
     components:{
-        ChartView,
+        // ChartView,
         Sensor,
         Camera
     },
     data(){
         return{
-            btnList: ['그래프', '센서값', '영상'],
+            // btnList: ['그래프', '센서값', '영상'],
+            btnList: ['그래프', '센서값'],
             btnState: 0,
             chart: {
                 data:{ 

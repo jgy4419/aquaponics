@@ -117,6 +117,15 @@ export default {
     }
     @media screen and (max-width: 900px){
         .inner{
+            .titleBox{
+                .box{
+                    width: 40px;
+                    height: 40px;
+                }
+                .greenTitle{
+                    font-size: 30px;
+                }
+            }
             .contentBox{
                 .items{
                     width: 100%;

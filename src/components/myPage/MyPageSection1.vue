@@ -43,7 +43,8 @@ export default {
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            border: 5px solid rgb(241, 240, 240);
+            // border: 5px solid rgb(241, 240, 240);
+            border: 0;
             margin-right: 5%;
         }
         .name{

@@ -9,7 +9,7 @@
 import Section1 from './MyPageSection1.vue'
 import Section2 from './MyPageSection2.vue'
 
-import axios from 'axios';
+// import axios from 'axios';
 export default {
     components: {
         Section1,
@@ -18,21 +18,21 @@ export default {
     data(){
         return{
             introduction: {
-                names: 'jgy',
-                intro: '안녕하세요 저는 jgy 입니다.',   
+                names: '아쿠',
+                intro: '안녕하세요 저는 아쿠 입니다.',   
             }
         }
     },
     mounted(){
-        axios.get('http://localhost:8800/user')
-        .then(res => {
-            console.log(res.data[0].name);
-            this.introduction.names = res.data[0].name;
-            this.introduction.intro = res.data[0].introduction;
-        })
-        .catch(err => {
-            console.log(err);
-        })
+        // axios.get('http://localhost:8800/user')
+        // .then(res => {
+        //     console.log(res.data[0].name);
+        //     this.introduction.names = res.data[0].name;
+        //     this.introduction.intro = res.data[0].introduction;
+        // })
+        // .catch(err => {
+        //     console.log(err);
+        // })
     },
 }
 </script>

@@ -4,7 +4,7 @@
         <div class="inner">
             <div class="titleBox">
                 <div class="box"/>
-                <p class="greenTitle">내 손안의 아쿠아포닉스. <br/>바로 시작해봐요!</p>
+                <p class="greenTitle">내 손 안의 아쿠아포닉스. <br/>바로 시작해봐요!</p>
             </div>
             <div class="contentBox2">
                 <div class="item" v-for="itemName, i in items.title.length" :key="i">
@@ -103,6 +103,15 @@ export default {
     @media screen and (max-width: 900px){
         height: 1000px;
         .inner{
+            .titleBox{
+                .box{
+                    width: 40px;
+                    height: 40px;
+                }
+                .greenTitle{
+                    font-size: 25px;
+                }
+            }
             .contentBox2{
                 display: block;
                 width: 100%;
