@@ -1,5 +1,5 @@
 <template>
-    <div class="referenceContain" style="margin-top: 30px">
+    <div class="referenceContain" style="margin-top: 100px">
         <div class="inner">
             <section class="sectionHead">
                 <p class="subTitle">Reference</p>
@@ -77,6 +77,11 @@ export default {
                 }
             }
         }
+    }
+}
+@media screen and (max-width: 500px){
+    .referenceContain{
+        margin-top: 15%;
     }
 }
 </style>

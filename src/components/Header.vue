@@ -72,7 +72,7 @@ export default {
 <style lang="scss" scoped>
 .menuBox{
     position: relative;
-    z-index: 100;
+    // z-index: 10;
     overflow-x: hidden;
     header{
         width: 100vw;
@@ -86,6 +86,7 @@ export default {
         justify-content: space-between;
         .logo{
             position: fixed;
+            z-index: 10;
             width: 50px;
         }
         @media screen and (max-width: 700px){
@@ -100,7 +101,7 @@ export default {
             top: -8px;
             right: 10%;
             cursor: pointer;
-            z-index: 1000;
+            z-index: 100;
             box-sizing: border-box;
             padding: 30px;
             width: 50px;
@@ -159,6 +160,7 @@ export default {
     }
     .menu{
         position: fixed;
+        overflow-x: hidden;
         top: 0;
         z-index: 2;
         opacity: 0;
@@ -202,6 +204,7 @@ export default {
     }
     .menu.event{
         z-index: 10;
+        width: 100%;
         height: 100vh;
         opacity: 1;
         transform: translateX(0px);

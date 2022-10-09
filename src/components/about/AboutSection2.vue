@@ -96,6 +96,8 @@ export default {
 
 <style lang="scss" scoped>
 .contain {
+    // position: relative;
+    // overflow-x: hidden;
     width: 100vw;
     height: 100vh;
     min-height: 650px;
@@ -162,6 +164,7 @@ export default {
             }
             .contentInner2{
                 .content2{
+                    overflow-x: hidden;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;

@@ -70,6 +70,7 @@ export default {
 <style lang="scss" scoped>
     .reference-type-contain{
         position: relative;
+        margin-top: 100px;
         // z-index: 2;
         width: 80vw;
         height: 500px;
@@ -158,7 +159,9 @@ export default {
             }
             .systemData, .piscesData{
                 .dataBox{
-                    width: 100%;
+                    margin: 30px auto;
+                    width: 300px;
+                    height: 200px;
                     .dataTitle {
                         @media screen and (max-width: 700px){
                             font-size: 20px;
