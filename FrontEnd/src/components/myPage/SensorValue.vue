@@ -1,0 +1,119 @@
+<template>
+    <div class="contain">
+        <br/>
+        <p class="title"><span class="user-name">아쿠</span>님의 아쿠아포닉스 상태는?</p>
+        <br>
+        <hr>
+        <div class="inner">
+            <div class="sensor" @click="modalOpen()">
+                <h2>온/습도 상태</h2>
+            </div>
+            <div class="sensor">
+                <h2>물 상태</h2>
+                <p class="humidity_state">이제 갈아줘야 됩니다!</p>
+            </div>
+            <div :class="ledState === 0 ? 'sensor on' : 'sensor off'"
+              @click="ledState === 0 ? ledState = 1 : ledState = 0">
+                <h2>LED {{ledState === 0 ? 'OFF' : 'ON'}}</h2>
+            </div>
+        </div>
+        <HumidityDetail 
+        :sensorModalState="this.sensorModalState" 
+        @state="sensorModalState = 0"
+        v-if="sensorModalState === 1"/>
+    </div>
+</template>
+
+<script>
+// import axios from 'axios';
+import HumidityDetail from './sensorDetail/Humidity.vue';
+export default {
+    components: {
+        HumidityDetail,
+    },
+    data(){
+        return{
+            sensorList:['온/습도 상태', '물 상태'],
+            sensorValue: [],
+            sensorModalState: 0,
+            ledState: 0,
+        }
+    },
+    mounted(){
+        // 특정 유저 센서 데이터 test 파일
+        // axios.get('http://localhost:8800/sensor')
+        // .then(res => {
+        //     console.log(res.data[0].sensor1);
+        //     for(let i = 0; i < res.data.length; i++){
+        //         this.sensorValue.push(res.data[0].sensor1);
+        //         this.sensorValue.push(res.data[0].sensor2);
+        //         this.sensorValue.push(res.data[0].author);
+        //     }
+        //     console.log('!!',this.sensorValue);
+        // })
+        // .catch(err => {
+        //     console.log(err);
+        // })
+    },
+    methods: {
+        modalOpen(){
+            this.sensorModalState = 1
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+.contain{
+    height: 100vh;
+    .title{
+        font-size: 30px;
+        font-weight: 700;
+        .user-name{
+            color: rgb(102, 206, 128);
+        }
+    }
+    .inner{
+        display: flex;
+        flex-wrap: wrap;
+        .sensor{
+            color: #333;
+            width: 30%;
+            height: 200px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            margin: 5% 3% 0% 0%;
+            padding: 20px;
+            box-shadow: 4px 12px 30px 6px rgb(231, 231, 231);
+            transition: .2s;
+            cursor: pointer;
+            .humidity_state{
+                margin-top: 10px;
+                font-size: 14px;
+                font-weight: 600;
+                font-size: #333;
+            }
+        }
+        .sensor .off{
+            color: #fff;
+            background-color: rgb(250, 150, 150);
+        }
+        .sensor:hover{
+            transform: translateY(-10px);
+        }
+    }
+    @media screen and (max-width: 768px){
+        .title{
+            font-size: 20px;
+        }
+        .inner{
+            display: block;
+            .sensor{
+                width: 100%;
+                height: 150px;
+                font-size: 14px;
+            }
+        }
+    }
+}
+</style>
