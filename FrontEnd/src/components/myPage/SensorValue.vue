@@ -16,20 +16,27 @@
               @click="ledState === 0 ? ledState = 1 : ledState = 0">
                 <h2>LED {{ledState === 0 ? 'OFF' : 'ON'}}</h2>
             </div>
+            <div class="use_chart_sensor">
+                <p class="title">온/습도</p>
+                <p class="sub_title">최근 7일 내 상태만 불러옵니다.</p>
+                <Chart/>
+            </div>
         </div>
-        <HumidityDetail 
+        <!-- <HumidityDetail 
         :sensorModalState="this.sensorModalState" 
         @state="sensorModalState = 0"
-        v-if="sensorModalState === 1"/>
+        v-if="sensorModalState === 1"/> -->
     </div>
 </template>
 
 <script>
+import Chart from './ChartView.vue';
 // import axios from 'axios';
-import HumidityDetail from './sensorDetail/Humidity.vue';
+// import HumidityDetail from './sensorDetail/Humidity.vue';
 export default {
     components: {
-        HumidityDetail,
+        // HumidityDetail,
+        Chart
     },
     data(){
         return{
@@ -100,6 +107,21 @@ export default {
         }
         .sensor:hover{
             transform: translateY(-10px);
+        }
+        .use_chart_sensor{
+            margin-top: 10%;
+            .title{
+                text-align: center;
+                font-size: 30px;
+                font-weight: 700;
+            }
+            .sub_title{
+                text-align: center;
+                margin-top: 20px;
+                font-size: 20px;
+                font-weight: 600;
+                color: grey;
+            }
         }
     }
     @media screen and (max-width: 768px){
