@@ -10,7 +10,6 @@
             <div v-if="btnState === 1" class="sensor">
                 <Sensor class="sensorInner"/>
             </div>
-                            <Chart/>
             <!-- <div v-if="btnState === 2"  class="watch">
                 <Camera/>
             </div> -->
@@ -21,13 +20,13 @@
 <script>
 // import ChartView from './ChartView.vue';
 import Sensor from './SensorValue.vue';
-import Chart from './ChartView.vue';
+// import Chart from './ChartView.vue';
 // import Camera from './Camera.vue';
 export default {
     name: "line-chart",
     type: "line",
     components:{
-        Chart,
+        // Chart,
         Sensor,
         // Camera
     },

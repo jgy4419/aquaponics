@@ -5,7 +5,7 @@
         <br>
         <hr>
         <div class="inner">
-            <div class="sensor" @click="modalOpen()">
+            <div class="sensor" >
                 <h2>온/습도 상태</h2>
             </div>
             <div class="sensor">
@@ -22,20 +22,14 @@
                 <Chart/>
             </div>
         </div>
-        <!-- <HumidityDetail 
-        :sensorModalState="this.sensorModalState" 
-        @state="sensorModalState = 0"
-        v-if="sensorModalState === 1"/> -->
     </div>
 </template>
 
 <script>
 import Chart from './ChartView.vue';
 // import axios from 'axios';
-// import HumidityDetail from './sensorDetail/Humidity.vue';
 export default {
     components: {
-        // HumidityDetail,
         Chart
     },
     data(){
@@ -63,9 +57,9 @@ export default {
         // })
     },
     methods: {
-        modalOpen(){
-            this.sensorModalState = 1
-        }
+        // modalOpen(){
+        //     this.sensorModalState = 1
+        // }
     }
 }
 </script>
