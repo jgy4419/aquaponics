@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Main</title>
+    </head>
+    <body>
+      <header>
+        <div class="headBox">
+          <div class="title">Aquaponics System</div>
+          <p class="text">시스템 조작</p>
+        </div>
+      </header>
+        <div class="contain">
+            <div class="inner">
+                <button class="pump" type="button" onclick="location.href='/pumpOn';">펌프 켜기</button>
+                <button class="pump" type="button" onclick="location.href='/pumpOff';">펌프 끄기</button>
+            </div>
+        </div>
+        <footer>
+            <div class="link">
+                <a href="/main">main</a>
+                <a href="/chart">chart</a>
+                <a href="/control">control</a>
+            </div>
+        </footer>
+    </body>
+</html>
+
+<style>
+  .headBox {
+		border: 2px solid #446666;
+		height: 10vh;
+		opacity: 50%;
+		padding-left: 1%;
+		display: flex;
+		align-items: center;
+	}
+	.headBox > .title {
+		color: transparent;
+        background: linear-gradient(to top, #7cb8b8, #c8d6d6);
+        background-clip: text;
+        -webkit-background-clip: text;
+		font-size: 300%;
+		margin: 5px;
+	}
+	.headBox > .text {
+    margin-left: 5%;
+		font-size: 200%;
+	}
+  .contain {
+    width: 95vw;
+    height: 80vh;
+  }
+  .contain > .inner {
+    position: relative;
+    top: 15vh;
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+  }
+  .contain > .inner > .pump {
+    height: 5vh;
+    width: 10vw;
+    margin: 10px;
+  }
+  .link {
+      width: 95vw;
+      height: 10vh;
+      background-color: #7cb8b8;
+      margin-left: 1vw;
+      padding-left: 2%;
+      display: flex;
+	position: fixed;
+	bottom: 0;
+  }
+  .link > a {
+      font-size: 30px;
+      margin-top: 1%;
+      margin-right: 1%;
+      color: #020314;
+      text-decoration-line: none;
+  }
+</style>

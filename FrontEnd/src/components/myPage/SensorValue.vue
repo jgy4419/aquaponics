@@ -5,19 +5,16 @@
         <br>
         <hr>
         <div class="inner">
-            <div class="sensor" >
-                <h2>온/습도 상태</h2>
-            </div>
-            <div class="sensor">
+            <div :class="waterState === 1 ? 'sensor humidity_state' : 'humidity_state_blue'">
                 <h2>물 상태</h2>
-                <p class="humidity_state">이제 갈아줘야 됩니다!</p>
+                <p>{{waterState === 1 ? '적당합니다!' : '물을 보충해주세요!'}}</p>
             </div>
             <div :class="ledState === 0 ? 'sensor on' : 'sensor off'"
-              @click="ledState === 0 ? ledState = 1 : ledState = 0">
+              @click="ledStateFunc()">
                 <h2>LED {{ledState === 0 ? 'OFF' : 'ON'}}</h2>
             </div>
             <div class="use_chart_sensor">
-                <p class="title">온/습도</p>
+                <p class="title">온/습도, 조도</p>
                 <p class="sub_title">최근 7일 내 상태만 불러옵니다.</p>
                 <Chart/>
             </div>
@@ -27,7 +24,7 @@
 
 <script>
 import Chart from './ChartView.vue';
-// import axios from 'axios';
+import axios from 'axios';
 export default {
     components: {
         Chart
@@ -38,28 +35,50 @@ export default {
             sensorValue: [],
             sensorModalState: 0,
             ledState: 0,
+            waterState: 0
         }
     },
-    mounted(){
-        // 특정 유저 센서 데이터 test 파일
-        // axios.get('http://localhost:8800/sensor')
-        // .then(res => {
-        //     console.log(res.data[0].sensor1);
-        //     for(let i = 0; i < res.data.length; i++){
-        //         this.sensorValue.push(res.data[0].sensor1);
-        //         this.sensorValue.push(res.data[0].sensor2);
-        //         this.sensorValue.push(res.data[0].author);
-        //     }
-        //     console.log('!!',this.sensorValue);
-        // })
-        // .catch(err => {
-        //     console.log(err);
-        // })
+    async mounted(){
+        // setInterval(async () => {
+            await axios.get(`http://127.0.0.1:5000/water`)
+            .then(res => {
+            this.waterState = res.data[res.data.length-1];
+            console.log(res.data);
+            }).catch(error => console.log(error));
+        // }, 100000);
     },
     methods: {
-        // modalOpen(){
-        //     this.sensorModalState = 1
-        // }
+        async ledStateFunc(){
+            if(this.ledState === 0){
+                axios.get(`http://127.0.0.1:5000/ledON`)
+                .then(res => {
+                    console.log([res.data]);
+                }).catch(error => console.log(error));
+            }
+            else if(this.ledState === 1){
+                axios.get(`http://127.0.0.1:5000/ledOFF`)
+                .then(res => {
+                    console.log([res.data]);
+                }).catch(error => console.log(error));
+            }
+            this.ledState === 0 ? this.ledState = 1 : this.ledState = 0;
+            //if(this.ledState === 0){
+            //    await axios.get(`http://127.0.0.1:5000/ledON`)
+            //    .then(res => {
+            //        this.waterState = res.data[res.data.length-1];
+            //        console.log(res.data);
+            //    }).catch(error => console.log(error));
+            //}
+            //else if(this.ledState === 1){
+            //    await axios.get(`http://127.0.0.1:5000/ledOFF`)
+            //    .then(res => {
+            //        this.waterState = res.data[res.data.length-1];
+            //        console.log(res.data);
+            //    }).catch(error => console.log(error));
+            //}
+            //this.ledState === 0 ? this.ledState = 1 : this.ledState = 0;
+
+       }
     }
 }
 </script>
@@ -88,11 +107,25 @@ export default {
             box-shadow: 4px 12px 30px 6px rgb(231, 231, 231);
             transition: .2s;
             cursor: pointer;
-            .humidity_state{
+            .humidity_state, .humidity_state_blue{
                 margin-top: 10px;
                 font-size: 14px;
                 font-weight: 600;
                 font-size: #333;
+                color: #333;
+                width: 30%;
+                height: 200px;
+                box-sizing: border-box;
+                border-radius: 10px;
+                margin: 5% 3% 0% 0%;
+                padding: 20px;
+                box-shadow: 4px 12px 30px 6px rgb(231, 231, 231);
+                transition: .2s;
+                cursor: pointer;
+            }
+            .humidity_state_blue{
+                background-color: rgb(151, 164, 233);
+                color: #fff;
             }
         }
         .sensor .off{

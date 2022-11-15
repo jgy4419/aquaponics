@@ -38,10 +38,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.section1{
-    margin-top: 5%;
-}
-.section2{
-    margin-top: 5%;
+.contain{
+    .section1{
+        margin-top: 5%;
+    }
+    .section2{
+        margin-top: 5%;
+    }
 }
 </style>

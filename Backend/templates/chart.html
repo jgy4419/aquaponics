@@ -1,0 +1,121 @@
+<html>
+<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="10">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<head>
+<script>
+	var chart_id = [];
+	var chart = [];
+	var series = [];
+	var title = [];
+	var xAxis = [];
+	var yAxis = [];
+	{% for item in chartInfo %}
+		chart.push({{ item[0]|safe }});
+		series.push({{ item[1]|safe }});
+		title.push({{ item[2]|safe }});
+		xAxis.push({{ item[3]|safe }});
+		yAxis.push({{ item[4]|safe }});
+	{% endfor %}
+
+	$(document).ready(function() {
+		$('#Humidity').highcharts({
+			chart: chart[0],
+			title: title[0],
+			xAxis: xAxis[0],
+			yAxis: yAxis[0],
+			series: series[0]
+		});
+		$('#Temperature').highcharts({
+			chart: chart[1],
+			title: title[1],
+			xAxis: xAxis[1],
+			yAxis: yAxis[1],
+			series: series[1]
+		});
+		$('#SoilHumidity').highcharts({
+			chart: chart[2],
+			title: title[2],
+			xAxis: xAxis[2],
+			yAxis: yAxis[2],
+			series: series[2]
+		});
+	    $('#Light').highcharts({
+			chart: chart[3],
+			title: title[3],
+			xAxis: xAxis[3],
+			yAxis: yAxis[3],
+			series: series[3]
+		});
+	    $('#pH').highcharts({
+			chart: chart[4],
+			title: title[4],
+			xAxis: xAxis[4],
+			yAxis: yAxis[4],
+			series: series[4]
+		});
+	});
+</script>
+</head>
+
+<body>
+	<header>
+		<div class="headBox">
+			<div class="title">Aquaponics System</div>
+			<p class="text">센서값 실시간 그래프</p>
+		</div>
+	</header>
+	<div id="Humidity" class="chart" style="height: 45vh; width: 80vw;"></div>
+	<div id="Temperature" class="chart" style="height: 45vh; width: 80vw;"></div>
+	<div id="SoilHumidity" class="chart" style="height: 45vh; width: 80vw;"></div>
+	<div id="Light" class="chart" style="height: 45vh; width: 80vw;"></div>
+	<div id="pH" class="chart" style="height: 45vh; width: 80vw;"></div>
+	<footer>
+		<div class="link">
+			<a href="/main">main</a>
+			<a href="/chart">chart</a>
+			<a href="/control">control</a>
+		</div>
+	</footer>
+</body>
+</html>
+<style>
+	.headBox {
+		border: 2px solid #446666;
+		height: 10vh;
+		opacity: 50%;
+		padding-left: 1%;
+		display: flex;
+		align-items: center;
+	}
+	.headBox > .title {
+		color: transparent;
+        background: linear-gradient(to top, #7cb8b8, #c8d6d6);
+        background-clip: text;
+        -webkit-background-clip: text;
+		font-size: 300%;
+		margin: 5px;
+	}
+	.headBox > .text {
+		margin-left: 5%;
+		font-size: 200%;
+	}
+	.link {
+        width: 95vw;
+        height: 10vh;
+        background-color: #7cb8b8;
+        margin-left: 1vw;
+        padding-left: 2%;
+        display: flex;
+		position: fixed;
+		bottom: 0;
+    }
+    .link > a {
+        font-size: 30px;
+        margin-top: 1%;
+        margin-right: 1%;
+        color: #020314;
+        text-decoration-line: none;
+    }
+</style>

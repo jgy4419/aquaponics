@@ -49,12 +49,12 @@ export default {
             datas: [],
             modalState: 0,
             resModal: '',
-            dataIndex: 0,
-            
+            dataIndex: 0,   
         }
     },
     created(){
         this.datas = data;
+        console.log(this.datas);
     },
     methods: {
         // 첫 번째 인자는 어디 클릭했는지 두 번째 인자는 구조 Modal에서 클릭했는지 물고기 Modal에서 클릭했는지 구분 시켜준다.

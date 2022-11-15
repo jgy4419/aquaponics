@@ -1,26 +1,40 @@
 <template>
-  <div style="height:20px; width:70vw">
-    <canvas id = "chart" style="height:200px;"></canvas>
+  <div style="width:75vw;">
+    <canvas id = "chart" class="chart"/>
+    <canvas id = "chart2" class="chart"/>
   </div>
 </template>
 
 <script>
 import { Chart, registerables } from 'chart.js';
-// import axios from 'axios';
+import axios from 'axios';
 Chart.register(...registerables);
 export default {
+  data(){
+    return{
+      myChart: null,
+      chartData: {
+        humidity: [],
+        lux: [],
+        temperature: [],
+        time: []
+      },
+      waterData: 0
+    };
+  },
   methods: {
-    fillData(){
-      const ctx = document.getElementById('chart').getContext('2d');
+    luxData(){
+      const ctx = document.getElementById('chart2').getContext('2d');
+      setTimeout(() => {
       this.myChart = new Chart(ctx, {
           type: 'line',
           data: {
-            labels: ['221001', '221002', '221003', '221004', '221005', '221006', '221007', '221001', '221002', '221003', '221004', '221005', '221006', '221007', '221001', '221002', '221003', '221004', '221005', '221006', '221007', '221001', '221002', '221003', '221004', '221005', '221006', '221007', '221001', '221002', '221003', '221004', '221005', '221006', '221007' ,'221001', '221002', '221003', '221004', '221005', '221006', '221007' ,'221001', '221002', '221003', '221004', '221005', '221006', '221007' ,'221001', '221002', '221003', '221004', '221005', '221006', '221007'],
+            labels: [...this.chartData.time],
             datasets: [
               {
-                label: '# of Votes',
-                data: [5, 2, 3, 50, 20, 40, 10, 5, 2, 3, 50, 20, 40, 10 ,5, 2, 3, 50, 20, 40, 10,5, 2, 3, 50, 20, 40, 10,5, 2, 3, 50, 20, 40, 10, 5, 2, 3, 50, 20, 40, 10,5, 2, 3, 50, 20, 40, 10,5, 2, 3, 50, 20, 40, 10,5, 2, 3, 50, 20, 40, 10],
-                // chartColor: ['#333', '#8e5ea2', '#3cba9f'],
+                label: '조도',
+                data: [...this.chartData.lux],
+                backgroundColor: '#3cba9f',
                 borderColor: 'rgb(7, 95, 95)',
                 postDetailChartState: 0,
                 borderWidth: 1
@@ -38,18 +52,68 @@ export default {
               animateRotate: true,
             }
           },
-        }
-      );
+        });
+      }, 1000);
+    },
+      fillData(){
+      const ctx = document.getElementById('chart').getContext('2d');
+      setTimeout(() => {
+      this.myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: [...this.chartData.time],
+            datasets: [
+              {
+                label: '습도',
+                data: [...this.chartData.humidity],
+                backgroundColor: '#3e95cd',
+                borderColor: 'rgb(7, 95, 95)',
+                postDetailChartState: 0,
+                borderWidth: 1
+              },
+              {
+                label: '온도',
+                data: [...this.chartData.temperature],
+                backgroundColor: '#8e5ea2',
+                borderColor: 'rgb(7, 95, 95)',
+                postDetailChartState: 0,
+                borderWidth: 1
+              }
+            ]
+          },
+          options: {
+            title: {
+              display: true,
+              responsive: false,
+              text: 'World population per region (in millions)'
+            },
+            animation: {
+              animateScale: true,
+              animateRotate: true,
+            }
+          },
+        });
+      }, 1000);
     }
   },
   mounted(){
     this.fillData();
+    this.luxData();
   },
-  data(){
-    return{
-      myChart: null
-    };
-  }
+  created(){
+    // setInterval(() => {
+      axios.get(`http://127.0.0.1:5000/sensor`)
+      .then(res => {
+        for(let i = 0; i < res.data.length; i++){
+          this.chartData.humidity.push(Number(res.data[i].humidity));
+          this.chartData.lux.push(Number(res.data[i].lux));
+          this.chartData.time.push(res.data[i].time.toString());
+          this.chartData.temperature.push(Number(res.data[i].temperature));
+        }
+        console.log([...this.chartData.humidity]);
+      })
+    // }, 10000);
+  },
 }
 </script>
 
