@@ -30,7 +30,6 @@ export default {
     },
     methods: {
         btnClick(i){
-            console.log(i);
             this.btnState = i;
         },
     }

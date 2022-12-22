@@ -23,17 +23,6 @@ export default {
             }
         }
     },
-    mounted(){
-        // axios.get('http://localhost:8800/user')
-        // .then(res => {
-        //     console.log(res.data[0].name);
-        //     this.introduction.names = res.data[0].name;
-        //     this.introduction.intro = res.data[0].introduction;
-        // })
-        // .catch(err => {
-        //     console.log(err);
-        // })
-    },
 }
 </script>
 

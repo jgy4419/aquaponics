@@ -39,45 +39,20 @@ export default {
         }
     },
     async mounted(){
-        // setInterval(async () => {
-            await axios.get(`http://127.0.0.1:5000/water`)
-            .then(res => {
-            this.waterState = res.data[res.data.length-1];
-            console.log(res.data);
-            }).catch(error => console.log(error));
-        // }, 100000);
+        await axios.get(`http://127.0.0.1:5000/water`)
+        .then(res => {
+        this.waterState = res.data[res.data.length-1];
+        }).catch(error => console.log(error));
     },
     methods: {
         async ledStateFunc(){
             if(this.ledState === 0){
                 axios.get(`http://127.0.0.1:5000/ledON`)
-                .then(res => {
-                    console.log([res.data]);
-                }).catch(error => console.log(error));
             }
             else if(this.ledState === 1){
                 axios.get(`http://127.0.0.1:5000/ledOFF`)
-                .then(res => {
-                    console.log([res.data]);
-                }).catch(error => console.log(error));
             }
             this.ledState === 0 ? this.ledState = 1 : this.ledState = 0;
-            //if(this.ledState === 0){
-            //    await axios.get(`http://127.0.0.1:5000/ledON`)
-            //    .then(res => {
-            //        this.waterState = res.data[res.data.length-1];
-            //        console.log(res.data);
-            //    }).catch(error => console.log(error));
-            //}
-            //else if(this.ledState === 1){
-            //    await axios.get(`http://127.0.0.1:5000/ledOFF`)
-            //    .then(res => {
-            //        this.waterState = res.data[res.data.length-1];
-            //        console.log(res.data);
-            //    }).catch(error => console.log(error));
-            //}
-            //this.ledState === 0 ? this.ledState = 1 : this.ledState = 0;
-
        }
     }
 }

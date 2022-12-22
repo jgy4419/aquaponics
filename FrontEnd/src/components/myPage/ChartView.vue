@@ -110,7 +110,6 @@ export default {
           this.chartData.time.push(res.data[i].time.toString());
           this.chartData.temperature.push(Number(res.data[i].temperature));
         }
-        console.log([...this.chartData.humidity]);
       })
     // }, 10000);
   },

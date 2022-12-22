@@ -34,10 +34,6 @@
 <script>
 import axios from 'axios';
 export default {
-    mounted(){
-        // this.grant = Number(this.grant);
-        // console.log(typeof this.grant);
-    },
     data(){
         return{
             name: ['password', 'rePassword', 'name', 'phonenumber', 'address', 'introduction', 'nickname'],
@@ -81,13 +77,11 @@ export default {
         idOverlap(){
             axios.post('/api/checkid', {mail: this.idInput})
             .then(res => {
-                console.log(res.data.checkid);
                 this.checkId = res.data.checkid; // true / false 유무
                 if(this.checkId === false){
                     alert('아이디 비밀번호가 겹칩니다.');
                     this.checkId = false;
                 }else if(this.checkId === true){
-                    console.log("aa", this.checkId);
                     alert('사용할 수 있는 아이디입니다.');
                     this.checkId = true;
                 }
@@ -95,16 +89,13 @@ export default {
         },
         nicknameOverlap(){
             let inputValue = document.querySelectorAll('.input');
-            console.log(inputValue[7].value)
             axios.post('/api/checkNickname', {nickname: inputValue[7].value})
             .then(res => {
-                console.log(res);
                 this.checkNickname = res.data.checkNickname;
                 if(this.checkNickname === false){
                     alert('닉네임이 겹칩니다!')
                     this.checkNickname = false;
                 }else if(this.checkNickname === true){
-                    console.log("aa", this.checkNickname);
                     alert('사용할 수 있는 닉네임입니다.');
                     this.checkNickname = true;
                 }

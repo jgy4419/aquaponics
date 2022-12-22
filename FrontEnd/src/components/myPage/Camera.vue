@@ -8,7 +8,6 @@
 <script>
 export default {
     mounted(){
-        console.log(this.btnState);
         this.menuState = this.btnState;
         var video = document.querySelector("#videoElement");
         if (navigator.mediaDevices.getUserMedia) {
